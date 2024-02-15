@@ -1,0 +1,13 @@
+.clock {
+  color: #ffffff;
+  margin-top: 15px;
+}
+.time {
+  font-weight: 700;
+  font-size: 1.7em;
+  margin-bottom: 5px;
+}
+.date {
+  font-size: 0.9em;
+  margin-bottom: -5px;
+}

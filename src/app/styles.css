@@ -1,0 +1,250 @@
+/* Common Styles */
+
+.bg-red {
+  background-color: red;
+}
+
+.app {
+  height: 100vh;
+  padding: 0;
+  z-index: 1;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: row;
+  text-align: center;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 10px;
+  overflow: auto;
+}
+
+.page-content{
+  flex-grow: 1;
+  margin: 0;
+}
+.container {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: 0.75s;
+}
+
+/* Text */
+.bold {
+  font-weight: 700;
+}
+.t-left {
+  text-align: left;
+}
+.t-center {
+  flex: 1;
+  text-align: center;
+}
+.t-small {
+  font-size: 0.8em;
+  line-height: 1;
+}
+
+.font-code {
+  font-family: "Courier New", Courier, monospace;
+  background-color: #EEEEEE;
+  padding: 5px 10px;
+  border-radius: 3px;
+  border: 1px solid #cccccc;
+}
+
+/* Alignment */
+.center-justify {
+  justify-content: center;
+}
+.center-align {
+  align-items: center;
+}
+.center-all {
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  align-self: center;
+}
+.width-content {
+  width: max-content;
+}
+.height-max {
+  height: 100%;
+}
+.text-right {
+  flex: 1;
+  text-align: right;
+}
+
+/* Pad */
+.pad-5 {
+  padding: 5px;
+}
+.pad-10 {
+  padding: 10px;
+}
+.pad-r-5 {
+  padding-right: 5px;
+}
+.pad-l-5 {
+  padding-left: 5px;
+}
+.pad-t-5 {
+  padding-top: 5px;
+}
+.pad-b-5 {
+  padding-bottom: 5px;
+}
+.pad-r-10 {
+  padding-right: 10px;
+}
+.pad-l-10 {
+  padding-left: 10px;
+}
+.pad-t-10 {
+  padding-top: 10px;
+}
+.pad-b-10 {
+  padding-bottom: 10px;
+}
+.pad-h-10 {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.pad-v-10 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+
+/* Margin */
+.mar-5 {
+  margin: 5px;
+}
+.mar-10 {
+  margin: 10px;
+}
+.mar-r-5 {
+  margin-right: 5px;
+}
+.mar-l-5 {
+  margin-left: 5px;
+}
+.mar-t-5 {
+  margin-top: 5px;
+}
+.mar-b-5 {
+  margin-bottom: 5px;
+}
+.mar-r-10 {
+  margin-right: 10px;
+}
+.mar-l-10 {
+  margin-left: 10px;
+}
+.mar-t-10 {
+  margin-top: 10px;
+}
+.mar-b-10 {
+  margin-bottom: 10px;
+}
+
+/* Pages */
+.login-page {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Box Shadows */
+.shadow-shallow {
+  box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.1), 0 2px 5px 0px rgba(0, 0, 0, 0.1);
+}
+.shadow-deep {
+  box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.3), 0 2px 1px 0px rgba(0, 0, 0, 0.3);
+}
+
+/* Flex */
+.flex {
+  display: flex;
+}
+.flex-1 {
+  display: flex;
+  flex: 1;
+}
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+.flex-grow {
+  flex-grow: 1;
+}
+.flex-text-right {
+  display: flex;
+  flex: 1;
+  text-align: right;
+}
+.flex-text-left {
+  display: flex;
+  flex: 1;
+  text-align: left;
+}
+.gap-10 {
+  gap: 10px;
+}
+.stretch {
+  align-self: stretch;
+  justify-content: stretch;
+}
+
+/* Colors */
+.gradient-blue {
+  background: linear-gradient(195deg, rgb(0, 102, 255), rgb(0, 51, 204))
+}
+
+.gradient-red {
+  background: linear-gradient(195deg, rgb(204, 0, 0), rgb(128, 0, 0))
+}
+
+.gradient-green {
+  background: linear-gradient(195deg, rgb(0, 153, 0), rgb(51, 102, 0))
+}
+
+.gradient-purple {
+  background: linear-gradient(195deg, rgb(153, 0, 153), rgb(102, 0, 51))
+}
+
+.gradient-purple {
+  background: linear-gradient(195deg, rgb(153, 0, 153), rgb(102, 0, 51))
+}
+
+.gradient-orange {
+  background: linear-gradient(195deg,   rgb(255, 51, 0), rgb(204, 51, 0))
+}
+
+.gradient-yellow {
+  background: linear-gradient(195deg,   rgb(204, 153, 0), rgb(153, 102, 0))
+}
+
+.gradient-black {
+  background: linear-gradient(195deg,   rgb( 38, 38, 38), rgb(13, 13, 13))
+}
