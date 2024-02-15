@@ -1,12 +1,9 @@
-import Image from "next/image"
-import styles from "./page.module.css"
+import "./globals.css"
 
-export default function Home() {
+export default function App() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-          <h1>Root</h1>
+      <div className="page">
+          <h1>App</h1>
       </div>
-    </main>
-  );
+  )
 }
