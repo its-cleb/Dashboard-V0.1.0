@@ -1,5 +1,4 @@
 "use client"
-import { Roboto } from "next/font/google"
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React, { useState } from 'react'
@@ -13,11 +12,11 @@ import "./navigationbar.css"
 import "../../app/styles.css"
 import "../../app/globals.css"
 
-const roboto = Roboto({ weight: ['400', '500', '700', '900'], subsets: ["latin"] })
-
 export default function NavigationBar(props) {
 
   const pathname = usePathname()
+  const path = "/" + pathname.charAt(1).toUpperCase()
+  + pathname.slice(2)
 
   const [ open, setOpen ] = useState(true)
   
@@ -99,14 +98,14 @@ export default function NavigationBar(props) {
           }
           <div className="routebar">
             <p className="route-text">
-              FluidMotionProduction/{props.pageName}
+              FluidMotionProduction{path}
             </p>
           </div>
           <div className="routebar-nav-btn" style={{marginRight: 5, marginLeft: 2}}>  
             <IoArrowBackOutline size={18} onClick={() => window.history.back()}/>
           </div>
           <div className="routebar-nav-btn">
-            <MdOutlineRefresh size={18} />
+            <MdOutlineRefresh size={18} onClick={() => window.location.reload(false)}/>
           </div>  
         </div>
         
