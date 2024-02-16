@@ -1,21 +1,12 @@
 
 import '../styles.css'
 import './page.css'
-import prisma from '@/lib/prisma'
 import { IconButton } from '@/components/generic/common'
 import { FaUsersGear } from "react-icons/fa6"
 import { BsBuildingFillGear } from "react-icons/bs"
 
-async function getUsers(){
-  const users = await prisma.user.findMany({
-  })
-  return users
-}
+export default function Admin() {
 
-export default async function Admin() {
-
-  const users = await getUsers()
-  console.log(users)
   return (
     <>
       <div className="page">

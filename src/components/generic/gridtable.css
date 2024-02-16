@@ -80,16 +80,16 @@ td {
   }
 }
 
-.cursor {
+.grid-cursor {
   cursor: pointer;
 }
-.cursor:hover {
+.grid-cursor:hover {
   color: blue;
 }
-.cursor-light {
+.grid-cursor-light {
   cursor: pointer;
 }
-.cursor-light:hover {
+.grid-cursor-light:hover {
   color: #33ccff;
 }
 .color-box {

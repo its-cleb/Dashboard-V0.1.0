@@ -1,0 +1,10 @@
+.users {
+  font-size: 15px;
+  text-overflow: clip;
+  overflow: hidden;
+}
+
+.section:hover {
+  background-color: rgb(51, 204, 255, 0.3);
+  transition: all 0.2s ease-in-out;
+}

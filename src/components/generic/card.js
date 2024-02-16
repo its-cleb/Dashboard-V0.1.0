@@ -122,7 +122,7 @@ const Section = (props) => {
   const hasHeader = Boolean(props.title === undefined) ? false : true
 
   return (
-    <div className={styleClasses}  style={{flex: activeFlex}}>
+    <div className={styleClasses} style={{flex: activeFlex}}>
       {hasHeader ?
         <div className="section-header">
           <div className='bold'>{props.title}</div>

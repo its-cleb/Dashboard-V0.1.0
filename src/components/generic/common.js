@@ -65,11 +65,29 @@ const Tooltip = (props) => {
   const styleClasses = "tooltip flex center-all" + (Boolean(props.className === undefined) ? "" : (" " + props.className))
 
   return (
-    <div class={styleClasses}> 
+    <div className={styleClasses}> 
       {props.children}
       <span class="tooltip-text shadow-shallow">{props.info}</span>
     </div>
   )
 }
 
-export { Button, Row, Column, IconButton, Tooltip } 
+// --- <Modal> ---
+const Modal = (props) => {
+  const styleClasses = "modal" + (Boolean(props.className === undefined) ? "" : (" " + props.className))
+
+  return (
+    <>
+      <div className="modal-bg">
+        <div className={styleClasses}> 
+          <div className="modal-title">{props.title}</div>
+          <div className="modal-content">
+            {props.children}
+          </div>
+        </div>
+      </div>
+    </>
+  )
+}
+
+export { Button, Row, Column, IconButton, Tooltip, Modal } 

@@ -231,14 +231,14 @@ const GridTable = (props) => {
               <div style={{margin: 10}}>
                 <div className="bold">Rows</div>
                 <div className="pad-b-5">{rows}</div>
-                <LuMinusCircle size={20} className="cursor pad-r-5" onClick={rowsMinus} />
-                <LuPlusCircle size={20} className="cursor" onClick={rowsPlus} />
+                <LuMinusCircle size={20} className="grid-cursor pad-r-5" onClick={rowsMinus} />
+                <LuPlusCircle size={20} className="grid-cursor" onClick={rowsPlus} />
               </div>
               <div style={{margin: 10}}>
                 <div className="bold">Columns</div>
                 <div className="pad-b-5">{columns}</div>
-                <LuMinusCircle size={20} className="cursor pad-r-5" onClick={columnsMinus} />
-                <LuPlusCircle size={20} className="cursor" onClick={columnsPlus} />
+                <LuMinusCircle size={20} className="grid-cursor pad-r-5" onClick={columnsMinus} />
+                <LuPlusCircle size={20} className="grid-cursor" onClick={columnsPlus} />
               </div>
             </div>
           </Section>

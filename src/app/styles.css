@@ -42,6 +42,15 @@
   transition: 0.75s;
 }
 
+.cursor {
+  cursor: pointer;
+  user-select: none;
+}
+.cursor-pointer {
+  cursor: pointer;
+  user-select: none;
+}
+
 /* Text */
 .bold {
   font-weight: 700;
@@ -129,7 +138,26 @@
   padding-top: 10px;
   padding-bottom: 10px;
 }
-
+.pad-r-20 {
+  padding-right: 20px;
+}
+.pad-l-20 {
+  padding-left: 20px;
+}
+.pad-t-20 {
+  padding-top: 20px;
+}
+.pad-b-20 {
+  padding-bottom: 20px;
+}
+.pad-h-20 {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.pad-v-20 {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
 
 /* Margin */
 .mar-5 {
@@ -161,6 +189,26 @@
 }
 .mar-b-10 {
   margin-bottom: 10px;
+}
+.mar-r-20 {
+  margin-right: 20px;
+}
+.mar-l-20 {
+  margin-left: 20px;
+}
+.mar-t-20 {
+  margin-top: 20px;
+}
+.mar-b-20 {
+  margin-bottom: 20px;
+}
+.mar-h-20 {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.mar-v-20 {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 /* Pages */
@@ -210,6 +258,9 @@
 }
 .gap-10 {
   gap: 10px;
+}
+.gap-20 {
+  gap: 20px;
 }
 .stretch {
   align-self: stretch;
