@@ -1,0 +1,45 @@
+.progress {
+	background-color: #d8d8d8;
+	border-radius: 20px;
+  border: 1px solid #555555;
+	position: relative;
+	height: 10px;
+  transition: all 0.3s ease-in-out;
+
+}
+.progress-done {
+	border-radius: 20px;
+	color: #fff;
+	display: flex;
+  flex-direction: row;
+  flex: 1;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+  transition: all 0.3s ease-in-out;
+}
+.progress-q {
+  position: absolute;
+  display: flex;
+  height: 10px;
+  width: 100%;
+  border-radius: 20px;
+
+  z-index: 10;
+  background-color: transparent;
+}
+.q1 {
+  flex: 1;
+  border-right: 1px solid #DDDDDD;
+}
+.q2 {
+  flex: 1;
+  border-right: 1px solid #DDDDDD;
+}
+.q3 {
+  flex: 1;
+  border-right: 1px solid #DDDDDD;
+}
+.q4 {
+  flex: 1;
+}

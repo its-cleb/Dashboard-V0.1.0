@@ -1,0 +1,133 @@
+
+/* Card */  
+.card {
+  border-radius: 5px;
+  border: 1px solid #aaaaaa;
+  background-color: #F9FAFA;
+  margin: 10px;
+}
+.card-header {
+  background-color: #ffffff;
+  border-radius: 5px;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid #aaaaaa;
+  padding: 2px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.card-title {
+  color: #333333;
+  font-weight: 800;
+}
+.card-content {
+  display: flex;
+  flex-direction: column;
+  background-color: #F9FAFA;
+  padding: 10px 10px 10px 10px;
+  overflow: auto;
+  gap: 5px;
+  border-radius: 5px;
+}
+
+/* Resizable Card */  
+.icon-hover-red:hover {
+  background-color: rgb(200, 0, 0, 0.1);
+  border-radius: 50%;
+  border: 0px solid #AA0000;
+  border-style: inset;
+}
+.icon-hover-green:hover {
+  background-color: rgb(0, 200, 0, 0.1);
+  border-radius: 50%;
+  border: 0px solid #AA0000;
+}
+.icon-dimension {
+  padding: 0 3px;
+}
+
+/* Card Info */ 
+.card-info {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 3px;
+  border-radius: 3px;
+  color: #888888;
+}
+
+/* Card Line */ 
+.card-line {
+  display: flex;
+  flex-direction: row;
+  padding: 3px 10px;
+  border-radius: 3px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.line-red {
+  background-color: rgb(255, 0, 0, 0.15);
+  border-color: rgb(128, 0, 0, 0.5);
+}
+.line-yellow {
+  background-color: rgb(255, 255, 0, 0.3);
+  border-color: rgb(204, 153, 0, 1);
+}
+.line-orange {
+  background-color: rgb(255, 102, 0, 0.3);
+  border-color: rgb(204, 51, 0, 0.5);
+}
+.line-green {
+  background-color: rgb(51, 204, 51, 0.3);
+  border-color: rgb(0, 102, 0, 0.8);
+}
+.line-blue {
+  background-color: rgb(51, 204, 255, 0.3);
+  border-color: rgb(0, 102, 204, 0.8);
+}
+
+/* Panel */  
+.panel {
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+  margin: 10px;
+}
+.panel-header {
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid #cccccc;
+  padding: 2px;
+}
+.panel-title {
+  color: #333333;
+  font-weight: 800;
+}
+.panel-content {
+  display: flex;
+  flex-direction: column;
+  padding: 5px 10px 10px 10px;
+  gap: 5px;
+}
+
+/* Section */  
+.section {
+  align-self: stretch;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+}
+.section-header {
+  border-top: 1px solid transparent;
+  padding: 2px;
+}
+.section-title {
+  color: #333333;
+  font-weight: 800;
+}
+.section-content {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px 10px 10px;
+  gap: 5px;
+}
+

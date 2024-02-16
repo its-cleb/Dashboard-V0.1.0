@@ -1,0 +1,117 @@
+.grid-page {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.grid {
+  align-content: center;
+  justify-content: center;
+}
+
+table {
+  table-layout: fixed;
+}
+.table {
+  table-layout: fixed;
+}
+.table-view {
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+tr {
+  height: 10px;
+}
+.cell {
+  display: flex;
+  flex: 1;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.1s ease-in-out;
+}
+.cell:hover {
+  background-color: #33ccff;
+  border-color: #33ccff !important;
+  outline: 2px dashed rgba(0,0,255,0.5);
+  transition: all 0.1s ease-in-out;
+}
+.cell-view {
+  display: flex;
+  flex: 1;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.1s ease-in-out;
+}
+.cell-text span {
+  color: black;
+  text-shadow: 0 0 2px white,
+  0 0 2px white,
+  0 0 2px white;
+  overflow: visible;
+  white-space: nowrap;
+  z-index: 10;
+}
+td {
+  padding: 0px;
+  transition: all 0.2s ease-in-out;
+}
+
+.select-cell {
+  animation-name: pulse-border;
+  animation-duration: 2.0s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+  transition: all 0.2s ease-in-out
+}
+@keyframes pulse-border {
+  0% {
+    outline: 5px solid #1166ff;
+  }
+
+  50% {
+    outline: 5px solid #33ccff;
+  }
+
+  100% {
+    outline: 5px solid #1166ff;
+  }
+}
+
+.cursor {
+  cursor: pointer;
+}
+.cursor:hover {
+  color: blue;
+}
+.cursor-light {
+  cursor: pointer;
+}
+.cursor-light:hover {
+  color: #33ccff;
+}
+.color-box {
+  border: 1px solid #666666;
+  height: 20px;
+  width: 30px;
+}
+.color-box:hover {
+  outline: 2px solid #33ccff;
+}
+
+.grid-container {
+  display: grid;
+  justify-content: center;
+}
+
+.cell-input {
+  padding: 5px 8px;
+  margin: 5px 0;
+  width: 120px;
+}
+
+.border-r-light {
+  border-right: 1px solid #999999;
+}
