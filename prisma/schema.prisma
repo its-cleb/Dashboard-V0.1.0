@@ -1,0 +1,102 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String  @id @default(uuid())
+  name          String  @db.VarChar(255)
+  email         String  @unique
+  position      String?
+  role          Role    @default(VIEW)
+  tasksAssigned Task[]  @relation("AssignedTo")
+  tasksCreated  Task[]  @relation("CreatedBy")
+}
+
+model Plant {
+  id   String @id @default(uuid())
+  name String @db.VarChar(255)
+  Bay  Bay[]
+  Boat Boat[]
+  Task Task[]
+}
+
+model Bay {
+  id      String     @id @default(uuid())
+  name    String     @db.VarChar(255)
+  status  BayStatus?
+  plantId String
+  plant   Plant      @relation(fields: [plantId], references: [id])
+}
+
+model Boat {
+  id         String     @id @default(uuid())
+  hull       String     @unique @db.VarChar(255)
+  model      String     @db.VarChar(255)
+  status     BoatStatus @default(ONTRACK)
+  plantId    String
+  plant      Plant      @relation(fields: [plantId], references: [id])
+  Task       Task[]
+  boatModels Models     @relation(fields: [model], references: [id])
+}
+
+model Task {
+  id           String     @id @default(uuid())
+  name         String     @db.VarChar(255)
+  status       TaskStatus @default(UPCOMING)
+  category     String
+  boatId       String
+  boat         Boat       @relation(fields: [boatId], references: [id])
+  plantId      String
+  plant        Plant      @relation(fields: [plantId], references: [id])
+  createdAt    DateTime   @default(now())
+  createdById  String
+  createdBy    User       @relation("CreatedBy", fields: [createdById], references: [id])
+  assignedDate DateTime?  @default(now())
+  assignedToId String?
+  assignedTo   User?      @relation("AssignedTo", fields: [assignedToId], references: [id])
+}
+
+model Models {
+  id     String      @id @default(uuid())
+  name   String      @db.VarChar(255)
+  status ModelStatus
+  Boat   Boat[]
+}
+
+enum Role {
+  VIEW
+  WORKER
+  MANAGER
+  ADMIN
+}
+
+enum TaskStatus {
+  UPCOMING
+  DELAYED
+  INPROGRESS
+  PROBLEM
+  COMPLETE
+}
+
+enum BoatStatus {
+  DELAYED
+  ONTRACK
+  PROBLEM
+  AHEAD
+}
+
+enum BayStatus {
+  EMPTY
+  OCCUPIED
+  CLEANUP
+}
+
+enum ModelStatus {
+  ACTIVE
+  RETIRED
+}

@@ -7,6 +7,7 @@ import { FaHome, FaWarehouse } from "react-icons/fa"
 import { TbMenu2 } from "react-icons/tb";
 import { IoSettingsSharp, IoArrowBackOutline } from "react-icons/io5"
 import { MdOutlineRefresh } from "react-icons/md"
+import { BsDatabaseFillGear } from "react-icons/bs"
 import Clock from "../generic/clock"
 import "./navigationbar.css"
 import "../../app/styles.css"
@@ -75,7 +76,13 @@ export default function NavigationBar(props) {
             </button>
           </Link>
           <div style={{flexGrow: 1}}></div>
-          <Link href="/">
+          <Link href="/admin">
+            <button className="sidebar-item sidebar-item-end">
+              <div className="sidebar-item-icon"><BsDatabaseFillGear size={22} /></div>
+              <div className="sidebar-item-text">Admin</div>
+            </button>
+          </Link>
+          <Link href="/settings">
             <button className="sidebar-item sidebar-item-end">
               <div className="sidebar-item-icon"><IoSettingsSharp size={20} /></div>
               <div className="sidebar-item-text">Settings</div>

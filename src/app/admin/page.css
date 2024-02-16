@@ -1,0 +1,33 @@
+.admin-menu {
+  padding: 40px;
+  margin-top: 80px;
+  width: 200px;
+}
+
+.admin-menu-button {
+  width: 170px;
+  height: 60px;
+}
+.admin-menu-button:hover {
+  background-color: rgb(0, 102, 255);
+  transition: all 0.2s ease-in-out;
+}
+
+.admin-menu-item {
+  display: flex;
+  flex-direction: row;
+  color: white;
+  background-color: transparent;
+  border: 0 solid transparent;
+  border-radius: 5px;
+  padding: 10px 20px 10px 10px;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+  text-align: left;
+  width: 150px;
+}
+
+.admin-menu-item-text {
+  font-size: 18px;
+  margin-left: 10px;
+}
