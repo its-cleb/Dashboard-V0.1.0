@@ -20,7 +20,7 @@ const BottomMenuItem = (props) => {
 
   return (
     <div>
-      <Link href={props.link} className="float-menu-item">
+      <Link href={props.href} className="float-menu-item">
         <div className="float-menu-item-icon">{props.children}</div>
         <div className="float-menu-item-text">{props.title}</div>
       </Link>

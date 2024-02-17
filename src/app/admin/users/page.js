@@ -6,6 +6,7 @@ import { IconButton } from '@/components/generic/common'
 import { FaUserPlus } from "react-icons/fa6"
 import { Card, Section } from '../../../components/generic/card'
 import { Row } from '../../../components/generic/common'
+import { BottomMenu, BottomMenuItem } from '@/components/navigation/bottommenu'
 
 async function getUsers(){
   const users = await prisma.user.findMany({
@@ -35,16 +36,22 @@ export default async function Users() {
           <Row>
             <div className="t-small bold center-all" style={{flex: 2}}>Name</div>
             <div className="t-small bold center-all" style={{flex: 4}}>Email</div>
-            <div className="t-small bold center-all" style={{flex: 2}}>Position</div>
-            <div className="t-small bold center-all" style={{flex: 1}}>Role</div>
+            <div className="t-small bold center-all" style={{flex: 2}}>Title</div>
+            <div className="t-small bold center-all" style={{flex: 1}}>Permissions</div>
             <div className="t-small bold center-all" style={{flex: 4}}>ID</div>
           </Row>
           {usersList}
         </Card>
-        <IconButton href="/admin/users/add-user" className="admin-menu-button center-all">
-          <div className="admin-menu-item-icon"><FaUserPlus size={25} /></div>
-          <div className="admin-menu-item-text">Add User</div>
-        </IconButton>
+
+        <BottomMenu>
+          <BottomMenuItem href="/admin/users/add-user">
+            <Row>
+              <div className="admin-menu-item-icon"><FaUserPlus size={25} /></div>
+              <div className="admin-menu-item-text">Add User</div>
+            </Row>
+          </BottomMenuItem>
+        </BottomMenu>
+
       </div>
     </>
   )

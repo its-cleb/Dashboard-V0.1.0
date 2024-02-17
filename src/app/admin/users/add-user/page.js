@@ -1,18 +1,20 @@
 "use client"
-import '../../../styles.css'
+import '@/app/styles.css'
 import './page.css'
 import React, { useState } from 'react'
-import { IconButton, Column } from '@/components/generic/common'
+import { useRouter } from 'next/navigation'
+import { Column } from '@/components/generic/common'
 import { FaUserPlus } from "react-icons/fa6"
 
 export default function Users() {
 
-  // Declare default values if AddEmployee was the parent
+  const router = useRouter()
+
   const blankForm = { 
     name: '',
     email: '', 
-    position:'', 
-    role:'', 
+    position: '', 
+    role: 'VIEW', 
   }
 
   const [ form, setForm ] = useState(blankForm)
@@ -25,7 +27,10 @@ export default function Users() {
   }
 
   const submitForm = async () => {
-    // e.preventDefault()
+    let name = form.name
+    let email = form.email
+    let position = form.position
+    let role = form.role
 
     try {
       fetch('/api/add-user', {
@@ -33,11 +38,12 @@ export default function Users() {
         headers: {
           'Content-Type': 'application/json'
       },
-      body: JSON.stringify({form})
+      body: JSON.stringify({name, email, position, role})
       })
     } catch (error) {
       console.error(error)
     }
+    router.push('/admin/users')
   }
 
   return (
@@ -47,7 +53,7 @@ export default function Users() {
         <div className="form-box center-all mar-t-20">
           <Column className="center-all gap-20">
             <Column>
-              <label className="t-left bold">Name</label>
+              <label className="t-left bold">Full Name</label>
               <input 
                 type="text"
                 value={form.name}
@@ -63,7 +69,7 @@ export default function Users() {
               />
             </Column>          
             <Column>
-              <label className="t-left bold">Position</label>
+              <label className="t-left bold">Title</label>
               <input 
                 type="text"
                 value={form.position}
@@ -71,20 +77,24 @@ export default function Users() {
               />
             </Column>          
             <Column>
-              <label className="t-left bold">Role</label>
-              <input 
-                type="text"
-                value={form.role}
-                onChange={e => setFormState('role', e.target.value)}
-              />
+              <label className="t-left bold">Permissions</label>
+              <div className="select">
+                <select className="select" value={form.role} onChange={e => setFormState('role', e.target.value)}>
+                  <option value="VIEW">View</option>
+                  <option value="WORKER">Worker</option>
+                  <option value="MANAGER">Manager</option>
+                  <option value="ADMIN">Admin</option>
+                  <p>test</p>
+                </select>
+              </div>
             </Column>
 
             <div onClick={() => submitForm()} className="user-add-button btn flex center-all cursor">
               <div className="admin-menu-item-icon"><FaUserPlus size={25} /></div>
               <div className="admin-menu-item-text">Add User</div>
             </div>
+            
           </Column>
-          
         </div>
         
       </div>

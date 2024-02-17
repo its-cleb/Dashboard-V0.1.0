@@ -29,11 +29,24 @@ const FloatMenu = (props) => {
 }
 
 // --- <FloatMenuItem> ---
-const FloatMenuItem = (props) => {
+const FloatMenuItemLink = (props) => {
 
   return (
     <div>
-      <Link href={props.link} className="float-menu-item">
+      <Link href={props.href} className="float-menu-item">
+        <div className="float-menu-item-icon">{props.children}</div>
+        <div className="float-menu-item-text">{props.title}</div>
+      </Link>
+    </div>
+  )
+}
+
+// --- <FloatMenuItem> ---
+const FloatMenuItemFunction = (props) => {
+
+  return (
+    <div>
+      <Link onClick={props.click} className="float-menu-item">
         <div className="float-menu-item-icon">{props.children}</div>
         <div className="float-menu-item-text">{props.title}</div>
       </Link>
@@ -42,4 +55,4 @@ const FloatMenuItem = (props) => {
 }
 
 
-export { FloatMenu, FloatMenuItem }
+export { FloatMenu, FloatMenuItemLink, FloatMenuItemFunction }

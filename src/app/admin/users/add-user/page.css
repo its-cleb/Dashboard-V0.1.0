@@ -1,8 +1,24 @@
 .form-box {
   gap: 20px;
+  margin-top: 40px;
+  width: 500px;
 }
 
+input {
+  width: 260px;
+  padding: 10px 20px;
+  font-weight: 400;
+  font-size: 1em;
+}
+
+.select {
+  width: 300px;
+}
+
+option:active {
+  background-color: red;
+}
 .user-add-button {
   margin-top: 20px;
-  width: 185px;
+  width: 260px;
 }

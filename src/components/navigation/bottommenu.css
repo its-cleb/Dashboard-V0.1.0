@@ -1,6 +1,6 @@
 /* Bottom Menu */
 .bottom-menu-container {
-  position: sticky;
+  position: absolute;
   bottom: 0px;
   display: flex;
   flex-direction: row;

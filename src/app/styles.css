@@ -51,6 +51,25 @@
   user-select: none;
 }
 
+/* Forms */
+input {
+  flex: 1;
+  display: flex;
+  flex-grow: 1;
+}
+select {
+  display: flex;
+  flex-grow: 1;
+  flex: 1;
+  border: 1px solid #aaaaaa;
+  padding: 10px 20px;
+  font-size: 1em;
+  border-radius: 5px;
+}
+option {
+  padding: 10px 20px;
+}
+
 /* Text */
 .bold {
   font-weight: 700;
