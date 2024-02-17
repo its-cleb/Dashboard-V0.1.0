@@ -24,8 +24,20 @@ export default function Users() {
     }))
   }
 
-  const submitForm = () => {
-    console.log("form submitted")
+  const submitForm = async () => {
+    // e.preventDefault()
+
+    try {
+      fetch('/api/add-user', {
+        method: 'POST', 
+        headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({form})
+      })
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   return (
@@ -39,20 +51,32 @@ export default function Users() {
               <input 
                 type="text"
                 value={form.name}
-                onChange={(text) => setFormState('name', text)}
+                onChange={e => setFormState('name', e.target.value)}
               />
             </Column>
             <Column>
               <label className="t-left bold">Email</label>
-              <input type="text" />
+              <input 
+                type="text"
+                value={form.email}
+                onChange={e => setFormState('email', e.target.value)}
+              />
             </Column>          
             <Column>
               <label className="t-left bold">Position</label>
-              <input type="text" />
+              <input 
+                type="text"
+                value={form.position}
+                onChange={e => setFormState('position', e.target.value)}
+              />
             </Column>          
             <Column>
               <label className="t-left bold">Role</label>
-              <input type="text" />
+              <input 
+                type="text"
+                value={form.role}
+                onChange={e => setFormState('role', e.target.value)}
+              />
             </Column>
 
             <div onClick={() => submitForm()} className="user-add-button btn flex center-all cursor">
