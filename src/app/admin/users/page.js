@@ -6,6 +6,7 @@ import { FaUserPlus } from "react-icons/fa6"
 import { Card, Section } from '../../../components/generic/card'
 import { Row } from '../../../components/generic/common'
 import { BottomMenu, BottomMenuItem } from '@/components/navigation/bottommenu'
+import DeleteUserButton from '@/components/custom/DeleteUserButton'
 
 async function getUsers(){
   const users = await prisma.user.findMany({
@@ -18,17 +19,20 @@ export default async function Users() {
   const users = await getUsers()
 
   const usersList = users.map(user => 
-  <Section key={user.id} className="section cursor-pointer">
-    <Link href={`/admin/users/${user.id}`}>
-      <Row>
-        <div className="bold center-all users" style={{flex: 2}}>{user.name}</div>
-        <div className="center-all users" style={{flex: 4}}>{user.email}</div>
-        <div className="center-all users" style={{flex: 2}}>{user.position}</div>
-        <div className="center-all users" style={{flex: 1}}>{user.role}</div>
-        <div className="center-all users" style={{flex: 4}}>{user.id}</div>
-      </Row>
-    </Link>
-  </Section>  
+  <Row>
+    <Section key={user.id} className="section cursor-pointer flex-1">
+      <Link href={`/admin/users/${user.id}`}>
+        <Row>
+          <div className="bold center-all users" style={{flex: 2}}>{user.name}</div>
+          <div className="center-all users" style={{flex: 4}}>{user.email}</div>
+          <div className="center-all users" style={{flex: 2}}>{user.position}</div>
+          <div className="center-all users" style={{flex: 1}}>{user.role}</div>
+          <div className="center-all users" style={{flex: 4}}>{user.id}</div>
+        </Row>
+      </Link>
+    </Section>  
+    <DeleteUserButton />
+  </Row>  
   )
 
   return (
