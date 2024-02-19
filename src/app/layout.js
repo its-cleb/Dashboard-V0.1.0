@@ -1,6 +1,5 @@
 import { Roboto } from "next/font/google"
 import dynamic from 'next/dynamic'
-import "./globals.css"
 import "./styles.css"
 
 const roboto = Roboto({ weight: ['400', '500', '700', '900'], subsets: ["latin"] })

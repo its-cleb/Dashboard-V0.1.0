@@ -11,7 +11,6 @@ import { BsDatabaseFillGear } from "react-icons/bs"
 import Clock from "../generic/clock"
 import "./navigationbar.css"
 import "../../app/styles.css"
-import "../../app/globals.css"
 
 export default function NavigationBar(props) {
 

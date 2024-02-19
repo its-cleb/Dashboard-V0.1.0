@@ -1,5 +1,77 @@
-/* Common Styles */
+body {
+  margin: 0;
+}
 
+:root {
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  color: #333333;
+  background-color: #ffffff;
+  background-image: url("../../public/45-degree-fabric-light.png");
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+a {
+  color: #666666;
+  text-decoration: inherit;
+}
+
+a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+a:hover {
+  color: rgb(0, 102, 255);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+h1 {
+  text-align: center;
+}
+
+h1, h2, h3 {
+  margin: 10px 0;
+}
+
+input {
+  border-radius: 5px;
+  border: 1px solid #aaaaaa;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  color: #0f0f0f;
+  background-color: #ffffff;
+  transition: border-color 0.25s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+button {
+  cursor: pointer;
+}
+
+button:hover {
+  border-color: #396cd8;
+}
+button:active {
+  border-color: #396cd8;
+  background-color: #e8e8e8;
+}
+
+/* Common Styles */
 .bg-red {
   background-color: red;
 }
