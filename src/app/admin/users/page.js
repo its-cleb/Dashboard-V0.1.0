@@ -18,7 +18,7 @@ export default async function Users() {
 
   const users = await getUsers()
   const usersList = users.map(user => 
-  <Section className="section cursor-pointer">
+  <Section key={user.id} className="section cursor-pointer">
     <Row>
       <div className="bold center-all users" style={{flex: 2}}>{user.name}</div>
       <div className="center-all users" style={{flex: 4}}>{user.email}</div>
@@ -32,7 +32,7 @@ export default async function Users() {
   return (
     <>
       <div className="page">
-        <Card title="Users" flex={1}>
+        <Card title="Users">
           <Row>
             <div className="t-small bold center-all" style={{flex: 2}}>Name</div>
             <div className="t-small bold center-all" style={{flex: 4}}>Email</div>
@@ -40,15 +40,14 @@ export default async function Users() {
             <div className="t-small bold center-all" style={{flex: 1}}>Permissions</div>
             <div className="t-small bold center-all" style={{flex: 4}}>ID</div>
           </Row>
+
           {usersList}
+
         </Card>
 
         <BottomMenu>
-          <BottomMenuItem href="/admin/users/add-user">
-            <Row>
-              <div className="admin-menu-item-icon"><FaUserPlus size={25} /></div>
-              <div className="admin-menu-item-text">Add User</div>
-            </Row>
+          <BottomMenuItem title="Add User" href="/admin/users/add-user" className="center-all">
+            <FaUserPlus size={20} className="admin-menu-item-icon center-all flex" />
           </BottomMenuItem>
         </BottomMenu>
 

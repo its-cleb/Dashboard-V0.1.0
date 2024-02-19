@@ -20,9 +20,9 @@ const BottomMenuItem = (props) => {
 
   return (
     <div>
-      <Link href={props.href} className="float-menu-item">
-        <div className="float-menu-item-icon">{props.children}</div>
-        <div className="float-menu-item-text">{props.title}</div>
+      <Link href={props.href} className="bottom-menu-item flex">
+        <div className="bottom-menu-item-icon flex">{props.children}</div>
+        <span className="bottom-menu-item-text flex center-all">{props.title}</span>
       </Link>
     </div>
   )

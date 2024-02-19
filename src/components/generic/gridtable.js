@@ -159,7 +159,6 @@ const GridTable = (props) => {
     } else { }
   }
   const zoomOut = () => {
-    console.log('zoomOut')
     if (cellSize > 10) {
       setCellSize(cellSize - 10)
       setBorderSize(borderSize - 1)
