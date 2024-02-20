@@ -19,20 +19,20 @@ export default async function Users() {
   const users = await getUsers()
 
   const usersList = users.map(user => 
-  <Row key={user.id}>
-    <Section flex={1}  className="cursor-pointer">
-      <Link href={`/admin/users/${user.id}`}>
-        <Row>
-          <div className="bold center-all users" style={{flex: 2}}>{user.name}</div>
-          <div className="center-all users" style={{flex: 4}}>{user.email}</div>
-          <div className="center-all users" style={{flex: 2}}>{user.position}</div>
-          <div className="center-all users" style={{flex: 1}}>{user.role}</div>
-          <div className="center-all users" style={{flex: 4}}>{user.id}</div>
-        </Row>
-      </Link>
-    </Section>
-    <DeleteUserButton userId={user.id}/>  
-  </Row>  
+    <Row key={user.id}>
+      <Section flex={1}  className="cursor-pointer">
+        <Link href={`/admin/users/${user.id}`}>
+          <Row>
+            <div className="bold center-all users" style={{flex: 2}}>{user.name}</div>
+            <div className="center-all users" style={{flex: 4}}>{user.email}</div>
+            <div className="center-all users" style={{flex: 2}}>{user.position}</div>
+            <div className="center-all users" style={{flex: 1}}>{user.role}</div>
+            <div className="center-all users" style={{flex: 4}}>{user.id}</div>
+          </Row>
+        </Link>
+      </Section>
+      <DeleteUserButton userId={user.id}/>  
+    </Row>  
   )
 
   return (

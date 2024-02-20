@@ -1,13 +1,21 @@
 "use client"
 import '@/app/styles.css'
-import './userForm.css'
+import './UserForm.css'
 import React, { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 import { Column } from '@/components/generic/common'
 import { FaUserPlus } from "react-icons/fa6"
 
 export default function UserForm(props) {
+  
+  // Extract User ID from URL Path
   const router = useRouter()
+  const path = usePathname()
+
+  let userId = null
+  props.edit ? userId = path.split("/").pop() : null
+
+  console.log(userId)
 
   const blankForm = { 
     name: '',
