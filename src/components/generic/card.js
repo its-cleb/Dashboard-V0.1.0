@@ -118,7 +118,7 @@ const Section = (props) => {
   const styleClasses = "section " + 
     (Boolean(props.className === undefined) ? "" : props.className) +
     (props.centeredContent ? " flex" : "")
-  const activeFlex = Boolean(props.flex === undefined) ? 'none' : props.flex
+  const activeFlex = Boolean(props.flex === undefined) ? '1' : props.flex
   const hasHeader = Boolean(props.title === undefined) ? false : true
 
   return (
@@ -129,7 +129,7 @@ const Section = (props) => {
         </div>
         : null
       }
-      <div className="section-content">
+      <div className="section-content flex-1">
         {props.children}
       </div>
     </div>

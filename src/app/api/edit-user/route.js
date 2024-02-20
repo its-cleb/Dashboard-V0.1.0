@@ -4,7 +4,7 @@ export async function GET(request){
   const res = await request.json()
   const {name, email, position, role} = res
   
-  console.log(res)
+  console.log('Edit User Response:', res)
 
     const result = await prisma.user.create({
       data: {

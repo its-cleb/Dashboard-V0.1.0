@@ -19,8 +19,8 @@ export default async function Users() {
   const users = await getUsers()
 
   const usersList = users.map(user => 
-  <Row>
-    <Section key={user.id} className="section cursor-pointer flex-1">
+  <Row key={user.id}>
+    <Section flex={1}  className="cursor-pointer">
       <Link href={`/admin/users/${user.id}`}>
         <Row>
           <div className="bold center-all users" style={{flex: 2}}>{user.name}</div>
@@ -30,8 +30,8 @@ export default async function Users() {
           <div className="center-all users" style={{flex: 4}}>{user.id}</div>
         </Row>
       </Link>
-    </Section>  
-    <DeleteUserButton />
+    </Section>
+    <DeleteUserButton userId={user.id}/>  
   </Row>  
   )
 
@@ -39,7 +39,7 @@ export default async function Users() {
     <>
       <div className="page">
         <Card title="Users">
-          <Row>
+          <Row className="users-header">
             <div className="t-small bold center-all" style={{flex: 2}}>Name</div>
             <div className="t-small bold center-all" style={{flex: 4}}>Email</div>
             <div className="t-small bold center-all" style={{flex: 2}}>Title</div>
