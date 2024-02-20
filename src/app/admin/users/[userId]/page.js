@@ -1,17 +1,7 @@
-import '@/app/styles.css'
-import prisma from '@/lib/prisma'
+import '../../../styles.css'
+import prisma from '../../../../lib/prisma'
 import React from 'react'
 import UserForm from '../../../../components/forms/UserForm'
-// async function get()
-
-// async function getUser(){
-//   const user = await prisma.user.findUnique({
-//     where: {
-//       id: '12321'
-//     }
-//   })
-//   return user
-// }
 
 export default async function EditUsers() {
 

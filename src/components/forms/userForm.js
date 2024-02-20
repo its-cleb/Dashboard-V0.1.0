@@ -1,21 +1,22 @@
 "use client"
-import '@/app/styles.css'
+import '../../app/styles.css'
 import './UserForm.css'
 import React, { useState } from 'react'
-import { useRouter, usePathname } from 'next/navigation'
-import { Column } from '@/components/generic/common'
+import { useRouter } from 'next/navigation'
+import { Column } from '../../components/generic/common'
 import { FaUserPlus } from "react-icons/fa6"
+import { useGetPathEnd } from "../../hooks/useGetPath"
 
 export default function UserForm(props) {
   
   // Extract User ID from URL Path
   const router = useRouter()
-  const path = usePathname()
+  const path = useGetPathEnd()
 
   let userId = null
-  props.edit ? userId = path.split("/").pop() : null
+  props.edit ? path : null
 
-  console.log(userId)
+  console.log(path)
 
   const blankForm = { 
     name: '',
@@ -24,6 +25,9 @@ export default function UserForm(props) {
     role: 'VIEW', 
   }
 
+  const [ user, setUser ] = useState(userId)
+
+  // Form State
   const [ form, setForm ] = useState(blankForm)
   const [ nameValid, setNameValid ] = useState(true)
   const [ emailValid, setEmailValid ] = useState(true)
@@ -37,8 +41,20 @@ export default function UserForm(props) {
     }))
   }
 
+  // Get User Data
+
+  async function handleClick(){
+    try {
+      await fetch(`/api/delete-user/${userId}`, {
+        method: 'DELETE'
+      })
+      router.refresh
+    } catch(e) {
+      console.error(e)
+    }
+  }
+
   const validateForm = () => {
-    
     {(form.name === '') ?
       setNameValid(false)
       :

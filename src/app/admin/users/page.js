@@ -1,12 +1,12 @@
 import './page.css'
 import '../../styles.css'
-import prisma from '@/lib/prisma'
+import prisma from '../../../lib/prisma'
 import Link from 'next/link'
 import { FaUserPlus } from "react-icons/fa6"
 import { Card, Section } from '../../../components/generic/card'
 import { Row } from '../../../components/generic/common'
-import { BottomMenu, BottomMenuItem } from '@/components/navigation/bottommenu'
-import DeleteUserButton from '@/components/custom/DeleteUserButton'
+import { BottomMenu, BottomMenuItem } from '../../../components/navigation/bottommenu'
+import DeleteUserButton from '../../../components/custom/DeleteUserButton'
 
 async function getUsers(){
   const users = await prisma.user.findMany({
