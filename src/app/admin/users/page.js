@@ -27,7 +27,7 @@ export default async function Users() {
             <div className="center-all users" style={{flex: 4}}>{user.email}</div>
             <div className="center-all users" style={{flex: 2}}>{user.position}</div>
             <div className="center-all users" style={{flex: 1}}>{user.role}</div>
-            <div className="center-all users" style={{flex: 4}}>{user.id}</div>
+            <div className="center-all t-small users" style={{flex: 4}}>{user.id}</div>
           </Row>
         </Link>
       </Section>
@@ -44,7 +44,7 @@ export default async function Users() {
             <div className="t-small bold center-all" style={{flex: 4}}>Email</div>
             <div className="t-small bold center-all" style={{flex: 2}}>Title</div>
             <div className="t-small bold center-all" style={{flex: 1}}>Permissions</div>
-            <div className="t-small bold center-all" style={{flex: 4}}>ID</div>
+            <div className="t-small bold center-all " style={{flex: 4}}>ID</div>
           </Row>
 
           {usersList}

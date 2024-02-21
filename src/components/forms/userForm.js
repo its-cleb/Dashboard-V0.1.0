@@ -4,9 +4,10 @@ import './UserForm.css'
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { Column } from '../generic/common'
-import { FaUserEdit } from "react-icons/fa";
+import { FaUserEdit } from "react-icons/fa"
 import { FaUserPlus } from "react-icons/fa6"
 import { useGetPathEnd } from "../../hooks/useGetPath"
+import Alert from "../generic/Alert"
 
 export default function UserForm(props) {
   
@@ -57,6 +58,9 @@ export default function UserForm(props) {
     null
   }, [])
 
+  // Form Alerts
+  const [ alert1, setAlert1 ] = useState(false)
+
   // Form Validation
   const validateForm = () => {
     {(form.name === '') ?
@@ -75,6 +79,7 @@ export default function UserForm(props) {
 
     if (form.name === '' || form.email === '' || form.position === '') {
       setFormValid(false)
+      setAlert1(true)
     } else if (form.name !== '' || form.email !== '' || form.position !== '') {
       setFormValid(true)
       
@@ -182,14 +187,10 @@ export default function UserForm(props) {
             <div className="user-button-text">{props.edit ? "Edit User" : "Add User"}</div>
           </div>
 
-          <div className={formValid ? 'validation-box display-none' : 'validation-box slide-up'}>
-            <h4>All fields must be filled out</h4>
-          </div>
+          <Alert message="All fields must be filled out!" open={alert1} />
 
           {props.edit ?
-            <div className={isLoading ? 'loading-box slide-up' : 'loading-box display-none'}>
-              <h4>Loading User...</h4>
-            </div>
+            <Alert message="Loading User..." green open={isLoading} />
             :
             null
           }
