@@ -2,8 +2,8 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Row, Column } from "../../../components/generic/common"
-import { CardResizable, CardInfo, CardLine } from "@/components/generic/card"
-import { FloatMenu, FloatMenuItemLink } from "@/components/navigation/floatmenu"
+import { CardResizable, CardInfo, CardLine } from "../../../components/generic/card"
+import { FloatMenu, FloatMenuItemLink } from "../../../components/navigation/floatmenu"
 import { CgMenuGridR } from "react-icons/cg"
 import "../../styles.css"  
 
