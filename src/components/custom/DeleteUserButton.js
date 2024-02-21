@@ -9,7 +9,7 @@ export default function DeleteUserButton({userId}){
 
   async function handleClick(){
     try {
-      await fetch(`/api/delete-user/${userId}`, {
+      await fetch(`/api/user/delete-user/${userId}`, {
         method: 'DELETE'
       })
       router.refresh

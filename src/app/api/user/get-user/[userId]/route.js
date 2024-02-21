@@ -7,7 +7,7 @@ export async function GET(request, { params }){
     where: {id}
   })
 
-  console.log(user)
+  console.log("Get User API:", user)
 
   return NextResponse.json(user)
 }
