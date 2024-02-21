@@ -9,7 +9,6 @@ export default function Alert(props) {
   
   useEffect(() => {
     setOpen(props.open)
-    console.log('notification toggled', open)
   }, [props.open])
 
   let style = "shadow-shallow alert-box" + (open ? " active" : "" ) + (props.green ? " green-alert" : " red-alert")

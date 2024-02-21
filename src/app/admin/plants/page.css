@@ -1,0 +1,22 @@
+.plants-row {
+  padding: -10px;
+}
+.plants {
+  color: #000000;
+  font-size: 14px;
+  text-overflow: clip;
+  overflow: hidden;
+}
+.plants-header {
+  padding-right: 35px;
+}
+.section {
+  display: flex;
+  flex: 1;
+  flex-grow: 1;
+  align-self: stretch;
+}
+.section:hover {
+  background-color: rgb(51, 204, 255, 0.3);
+  transition: all 0.2s ease-in-out;
+}

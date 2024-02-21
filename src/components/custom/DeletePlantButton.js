@@ -1,15 +1,15 @@
 "use client"
-import './DeleteUserButton.css'
+import './DeletePlantButton.css'
 import { useRouter } from 'next/navigation'
 import { MdDeleteForever } from "react-icons/md"
 
-export default function DeleteUserButton({userId}){
+export default function DeletePlantButton({plantId}){
   
   const router = useRouter()
 
   async function handleClick(){
     try {
-      fetch(`/api/user/delete-user/${userId}`, {
+      fetch(`/api/plant/delete-plant/${plantId}`, {
         method: 'DELETE'
       })
       window.location.reload(false)

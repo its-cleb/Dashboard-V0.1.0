@@ -21,7 +21,8 @@ export default function UserForm(props) {
     name: '',
     email: '', 
     position: '', 
-    role: 'VIEW', 
+    role: 'VIEW',
+    plantId: '', 
   }
 
   // Form State

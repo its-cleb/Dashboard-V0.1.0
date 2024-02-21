@@ -8,21 +8,23 @@ datasource db {
 }
 
 model User {
-  id            String  @id @default(uuid())
-  name          String  @db.VarChar(255)
-  email         String  @unique
-  position      String?
-  role          Role    @default(VIEW)
-  tasksAssigned Task[]  @relation("AssignedTo")
-  tasksCreated  Task[]  @relation("CreatedBy")
+  id              String    @id @default(uuid())
+  name            String    @db.VarChar(255)
+  email           String    @unique
+  position        String?
+  role            Role      @default(VIEW)
+  tasksAssigned   Task[]    @relation("AssignedTo")
+  tasksCreated    Task[]    @relation("CreatedBy")
+  commentsCreated Comment[] @relation("MadeBy")
 }
 
 model Plant {
-  id   String @id @default(uuid())
-  name String @db.VarChar(255)
-  Bay  Bay[]
-  Boat Boat[]
-  Task Task[]
+  id      String  @id @default(uuid())
+  name    String  @db.VarChar(255)
+  manager String? @db.VarChar(255)
+  Bay     Bay[]
+  Boat    Boat[]
+  Task    Task[]
 }
 
 model Bay {
@@ -59,6 +61,17 @@ model Task {
   assignedDate DateTime?  @default(now())
   assignedToId String?
   assignedTo   User?      @relation("AssignedTo", fields: [assignedToId], references: [id])
+  comments     Comment[]
+}
+
+model Comment {
+  id        String   @id @default(uuid())
+  message   String   @db.VarChar(999)
+  createdAt DateTime @default(now())
+  madedById String
+  madeBy    User     @relation("MadeBy", fields: [madedById], references: [id])
+  taskId    String?
+  task      Task?    @relation(fields: [taskId], references: [id])
 }
 
 model Models {

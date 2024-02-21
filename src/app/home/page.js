@@ -119,7 +119,7 @@ export default function Home() {
             </Card>
             </Column>
         </Row>
-        </div>
+      </div>
     </>
   )
 }
