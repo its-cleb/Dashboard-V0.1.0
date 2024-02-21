@@ -1,9 +1,9 @@
 "use client"
 import '../../app/styles.css'
 import './UserForm.css'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { Column } from '../../components/generic/common'
+import { Column } from '../generic/common'
 import { FaUserPlus } from "react-icons/fa6"
 import { useGetPathEnd } from "../../hooks/useGetPath"
 
@@ -13,10 +13,7 @@ export default function UserForm(props) {
   const router = useRouter()
   const path = useGetPathEnd()
 
-  let userId = null
-  props.edit ? path : null
-
-  console.log(path)
+  let userId = props.edit ? path : null
 
   const blankForm = { 
     name: '',
@@ -24,8 +21,6 @@ export default function UserForm(props) {
     position: '', 
     role: 'VIEW', 
   }
-
-  const [ user, setUser ] = useState(userId)
 
   // Form State
   const [ form, setForm ] = useState(blankForm)
@@ -41,19 +36,24 @@ export default function UserForm(props) {
     }))
   }
 
-  // Get User Data
+  // Fetch Data if Edit
+  const [isLoading, setLoading] = useState(true)
 
-  async function handleClick(){
-    try {
-      await fetch(`/api/delete-user/${userId}`, {
-        method: 'DELETE'
-      })
-      router.refresh
-    } catch(e) {
-      console.error(e)
-    }
-  }
+  useEffect(() => {
+    fetch(`/api/get-user/${userId}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setForm({
+          name: data.name.toString(),
+          email: data.email.toString(),
+          position: data.position.toString(),
+          role: data.role.toString()
+        })
+        setLoading(false)
+    })
+  }, [])
 
+  // Form Validation
   const validateForm = () => {
     {(form.name === '') ?
       setNameValid(false)
@@ -68,19 +68,22 @@ export default function UserForm(props) {
       :
       setTitleValid(true)
     }
-    console.log(nameValid, emailValid, titleValid)
 
     if (form.name === '' || form.email === '' || form.position === '') {
       setFormValid(false)
     } else if (form.name !== '' || form.email !== '' || form.position !== '') {
       setFormValid(true)
-      submitForm()
+      
+      edit ?
+        addUser()
+        :
+        editUser()
     } else {
       console.log('Unknown Validation Error')
     }
   }
 
-  const submitForm = async () => {
+  const addUser = async () => {
     let name = form.name
     let email = form.email
     let position = form.position
@@ -98,6 +101,10 @@ export default function UserForm(props) {
       console.error(error)
     }
     router.push('/admin/users')
+  }
+
+  const editUser = async () => {
+    console.log('edit')
   }
 
   return (

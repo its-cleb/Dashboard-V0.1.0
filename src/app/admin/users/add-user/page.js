@@ -1,4 +1,3 @@
-"use client"
 import '../../../styles.css'
 import UserForm from '../../../../components/forms/UserForm'
 import React from 'react'
