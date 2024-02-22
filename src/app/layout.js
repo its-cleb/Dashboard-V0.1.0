@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={roboto.className}>
         <div className="app">
-          <NavBar>
+          <NavBar suppressHydrationWarning>
             {children}
           </NavBar>
         </div>

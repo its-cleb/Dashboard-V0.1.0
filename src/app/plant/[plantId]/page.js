@@ -2,7 +2,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Row, Column } from "../../../components/generic/common"
-import { CardResizable, CardInfo, CardLine } from "../../../components/generic/card"
+import { Card, CardInfo, CardLine } from "../../../components/generic/card"
 import { FloatMenu, FloatMenuItemLink } from "../../../components/navigation/floatmenu"
 import { CgMenuGridR } from "react-icons/cg"
 import "../../styles.css"  
@@ -39,10 +39,10 @@ export default function Plant() {
 
   return (
     <>
-      <h3>{plantName}</h3>
+      <h3>{plantName}{pathname}</h3>
       <Row>
         <Column>
-          <CardResizable title="Bay 1" flex={1}>
+          <Card title="Bay 1" href={pathname} flex={1}>
             <CardInfo>
               <Link href="/boat/Solara-250-CW_9FB7S9F89SA">
                 <div className="bold t-center">Solara 250 CW</div>
@@ -69,12 +69,12 @@ export default function Plant() {
               Hull
               <div className="text-right">6/1/2024</div>
           </CardLine>
-          </CardResizable>
+        </Card>
 
-          <CardResizable title="Bay 2" flex={1}></CardResizable>
+          <Card title="Bay 2" flex={1}></Card>
         </Column>
-          <CardResizable title="Bay 2" flex={1}></CardResizable>
-          <CardResizable title="Bay 3" flex={1}></CardResizable>
+          <Card title="Bay 2" flex={1}></Card>
+          <Card title="Bay 3" flex={1}></Card>
       </Row>
       <FloatMenu>
         <FloatMenuItemLink href="/building/ARL-2" title="Edit Building">

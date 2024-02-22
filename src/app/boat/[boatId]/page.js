@@ -12,7 +12,7 @@ export default function Boat() {
 
   return (
     <>
-      <h3>{pathname}</h3>
+      <h3>Solara 250 CW</h3>
       <Row>
         <Section title="Info" className="mar-10 shadow-shallow" flex={1} >
           <div className="t-left"><b>Plant:</b> ARL-6</div>
@@ -23,26 +23,24 @@ export default function Boat() {
         </Section>        
         <Card title="Build Tasks" flex={3}>
           <CardLine colorClass="line-red">
-            <Link href="/task/FB7S9F89SA">
-              Laminate
-              <div className="flex-text-right">11/11/2024</div>
-            </Link>
+            Laminate
+            <div className="text-right">11/11/2024</div>
           </CardLine>
           <CardLine colorClass="line-yellow">
             Plumbing
-            <div className="flex-text-right">9/26/2024</div>
+            <div className="text-right">9/26/2024</div>
           </CardLine>
           <CardLine colorClass="line-orange">
             Electrical
-            <div className="flex-text-right">1/10/2024</div>
+            <div className="text-right">1/10/2024</div>
           </CardLine>
           <CardLine colorClass="line-green">            
             Liner Drop
-            <div className="flex-text-right">4/21/2024</div>
+            <div className="text-right">4/21/2024</div>
           </CardLine>
           <CardLine colorClass="line-blue">            
             Hull
-            <div className="flex-text-right">6/1/2024</div>
+            <div className="text-right">6/1/2024</div>
           </CardLine>
         </Card>
       </Row>

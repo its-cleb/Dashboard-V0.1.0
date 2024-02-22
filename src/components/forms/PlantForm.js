@@ -3,9 +3,11 @@ import '../../app/styles.css'
 import './PlantForm.css'
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { Column } from '../generic/common'
+import { Row, Column } from '../generic/common'
 import { BsBuildingFillAdd, BsBuildingFillGear } from "react-icons/bs"
-import { useGetPathEnd } from "../../hooks/useGetPath"
+import { BottomMenu, BottomMenuItem } from '../../components/navigation/bottommenu'
+import { BiBorderAll } from "react-icons/bi"
+import { useGetPath, useGetPathEnd } from "../../hooks/useGetPath"
 import Alert from "../generic/Alert"
 
 export default function PlantForm(props) {
@@ -13,6 +15,8 @@ export default function PlantForm(props) {
   // Extract Plant ID from URL Path
   const router = useRouter()
   const path = useGetPathEnd()
+  const plant = useGetPath()
+  const bay = plant.toString() + '/bays'
 
   let plantId = props.edit ? path : null
 
@@ -162,6 +166,12 @@ export default function PlantForm(props) {
           }
         </Column>
       </div>
+
+      <BottomMenu>
+        <BottomMenuItem title="Edit Bays" href={bay} className="center-all">
+          <BiBorderAll size={20} className="admin-menu-item-icon center-all flex" />
+        </BottomMenuItem>
+      </BottomMenu>
     </>
   )
 }
