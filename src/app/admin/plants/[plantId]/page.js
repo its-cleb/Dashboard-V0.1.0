@@ -9,11 +9,7 @@ export default async function EditPlants() {
       <div className="page">
 
         <h1>Edit Plant</h1>
-        
-        <div className="flex-1 center-all">
-          <PlantForm edit />
-        </div>
-        
+        <PlantForm edit />
       </div>
     </>
   )

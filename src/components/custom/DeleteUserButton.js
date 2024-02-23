@@ -1,5 +1,5 @@
 "use client"
-import './DeleteUserButton.css'
+import './DeleteButton.css'
 import { useRouter } from 'next/navigation'
 import { MdDeleteForever } from "react-icons/md"
 

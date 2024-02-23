@@ -3,13 +3,13 @@ import './DeleteButton.css'
 import { useRouter } from 'next/navigation'
 import { MdDeleteForever } from "react-icons/md"
 
-export default function DeletePlantButton({plantId}){
+export default function DeleteBayButton({bayId}){
   
   const router = useRouter()
 
   async function handleClick(){
     try {
-      fetch(`/api/plant/delete-plant/${plantId}`, {
+      fetch(`/api/bay/delete-bay/${bayId}`, {
         method: 'DELETE'
       })
       window.location.reload(false)

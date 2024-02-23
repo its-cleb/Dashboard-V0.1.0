@@ -124,7 +124,7 @@ export default function PlantForm(props) {
 
   return (
     <>
-      <div className="form-box center-all mar-t-20">
+      <div className="form-box flex-1 flex center-all mar-t-20">
         <Column className="center-all gap-10">
           <Column>
             <label className="form-label t-left bold">Plant Name</label>
