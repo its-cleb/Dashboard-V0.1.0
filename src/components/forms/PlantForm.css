@@ -29,6 +29,9 @@ option:active {
   padding-left: 10px;
 }
 
+.bay-card {
+  width: 200px;
+}
 .invalid {
   border-color: red;
 }

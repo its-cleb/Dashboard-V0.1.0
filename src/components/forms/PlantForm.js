@@ -3,7 +3,9 @@ import '../../app/styles.css'
 import './PlantForm.css'
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import { Row, Column } from '../generic/common'
+import { Card, Section } from '../generic/card'
 import { BsBuildingFillAdd, BsBuildingFillGear } from "react-icons/bs"
 import { BottomMenu, BottomMenuItem } from '../../components/navigation/bottommenu'
 import { BiBorderAll } from "react-icons/bi"
@@ -16,7 +18,6 @@ export default function PlantForm(props) {
   const router = useRouter()
   const path = useGetPathEnd()
   const plant = useGetPath()
-  const bay = plant.toString() + '/bays'
 
   let plantId = props.edit ? path : null
 
@@ -25,8 +26,9 @@ export default function PlantForm(props) {
     manager: ''
   }
 
-  // Form State
+  // Form Status
   const [ form, setForm ] = useState(blankForm)
+  const [ bays, setBays ] = useState([])
   const [ nameValid, setNameValid ] = useState(true)
   const [ managerValid, setManagerValid ] = useState(true)
   const [ formValid, setFormValid ] = useState(true)
@@ -38,23 +40,37 @@ export default function PlantForm(props) {
     }))
   }
 
-  // Fetch Data if Edit
-  const [isLoading, setLoading] = useState(true)
+  // Loading States
+  const [plantIsLoading, setPlantIsLoading] = useState(true)
+  const [bayIsLoading, setBayIsLoading] = useState(false)
 
-  useEffect(() => {
+  useEffect(() => { // Load Plant Data
     props.edit ?
-    fetch(`/api/plant/get-plant/${plantId}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setForm({
-          name: data.name.toString(),
-          manager: data.manager.toString(),
-        })
-        setLoading(false)
-    })
+      fetch(`/api/plant/get-plant/${plantId}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setForm({
+            name: data.name.toString(),
+            manager: data.manager.toString(),
+          })
+          setPlantIsLoading(false)
+          setBayIsLoading(true)
+      })
     :
     null
   }, [])
+  
+  useEffect(() => { // Load Bay Data
+    props.edit ?
+    fetch(`/api/bay/get-bays/${plantId}`)
+      .then((res) => res.json())
+      .then((bayData) => {
+        setBays(bayData)
+        setBayIsLoading(false)
+    })
+    :
+    null
+  }, [plantIsLoading])
 
   // Form Alerts
   const [ alert1, setAlert1 ] = useState(false)
@@ -122,6 +138,18 @@ export default function PlantForm(props) {
     router.push('/admin/plants')
   }
 
+  // Bay List Content
+  const bayList = bays.map(bay => 
+    <Row key={bay.id}>
+      <Link href={`/admin/plants/${plant.id}`}>
+        <Row className="bay-card">
+          <div className="bold center-all plants" style={{flex: 1}}>{bay.name}</div>
+          <div className="center-all plants" style={{flex: 1}}>{bay.status}</div>
+        </Row>
+      </Link>
+    </Row>  
+  )
+
   return (
     <>
       <div className="form-box flex-1 flex center-all mar-t-20">
@@ -154,21 +182,35 @@ export default function PlantForm(props) {
               <BsBuildingFillAdd size={25} />
             }
             </div>
-            <div className="plant-button-text">{props.edit ? "Edit Plant" : "Add Plant"}</div>
+            <div className="plant-button-text">{props.edit ? "Save Plant Edits" : "Add Plant"}</div>
           </div>
+
+          {props.edit ?
+            <Column>
+              <Card title="Bays">
+                {bayList}
+              </Card>
+            </Column>
+            :
+            null
+          }
 
           <Alert message="All fields must be filled out!" open={alert1} />
 
           {props.edit ?
-            <Alert message="Loading Plant..." green open={isLoading} />
+            <Alert message="Loading Plant Data..." green open={plantIsLoading} />
             :
-            null
-          }
+            null}
+
+          {props.edit ?
+            <Alert message="Loading Bay Data..." green open={bayIsLoading} />
+            :
+            null}
         </Column>
       </div>
 
       <BottomMenu>
-        <BottomMenuItem title="Edit Bays" href={bay} className="center-all">
+        <BottomMenuItem title="Open Bay Editor" href={`/admin/bays/${plantId}`} className="center-all">
           <BiBorderAll size={20} className="admin-menu-item-icon center-all flex" />
         </BottomMenuItem>
       </BottomMenu>
