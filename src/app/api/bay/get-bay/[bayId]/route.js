@@ -3,11 +3,11 @@ import { NextResponse } from "next/server"
 export async function GET(request, { params }){
   const plantId = params.plantId
 
-  const bays = await prisma.bay.findMany({
+  const bay = await prisma.bay.findMany({
     where: {plantId}
   })
 
-  console.log("Get Bays API:", bays)
+  console.log("Get Bay API:", bay)
 
-  return NextResponse.json(bays)
+  return NextResponse.json(bay)
 }

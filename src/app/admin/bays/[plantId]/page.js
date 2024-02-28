@@ -4,14 +4,13 @@ import '../../../styles.css'
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { CgExtensionAdd } from "react-icons/cg";
+import { CgExtensionAdd } from "react-icons/cg"
 import { Row } from '../../../../components/generic/common'
 import { Card, Section } from '../../../../components/generic/card'
-import { useGetPathEnd, useGetPath } from '../../../../hooks/useGetPath'
+import { useGetPathEnd } from '../../../../hooks/useGetPath'
 import Alert from '../../../../components/generic/Alert'
 import { BottomMenu, BottomMenuItem } from '../../../../components/navigation/bottommenu'
 import DeleteBayButton from '../../../../components/custom/DeleteBayButton'
-import useGetPlantName from '../../../../hooks/useGetPlantName'
 
 
 export default function BaysByPlant() {
@@ -19,13 +18,24 @@ export default function BaysByPlant() {
   // Extract Plant ID from URL Path
   const router = useRouter()
   const path = useGetPathEnd()
-  const plant = useGetPath()
 
   let plantId = path
 
   // Loading States
-  const [ bayIsLoading, setBayIsLoading ] = useState(true)
+  const [ plantIsLoading, setPlantIsLoading ] = useState(true)
+  const [ bayIsLoading, setBayIsLoading ] = useState(false)
+  const [ plant, setPlant ] = useState('Plant')
   const [ bays, setBays ] = useState([])
+
+  useEffect(() => { // Load Plant Data
+    fetch(`/api/plant/get-plant/${plantId}`)
+      .then((res) => res.json())
+      .then((plantData) => {
+        console.log
+        // setPlant(plantData.name)
+        setPlantIsLoading(false)
+    })
+  }, [])
 
   useEffect(() => { // Load Bay Data
     fetch(`/api/bay/get-bays/${plantId}`)
@@ -33,9 +43,8 @@ export default function BaysByPlant() {
       .then((bayData) => {
         setBays(bayData)
         setBayIsLoading(false)
-        useGetPlantName(plantId)
     })
-  }, [])
+  }, [plantIsLoading])
 
   const baysList = bays.map(bay => 
     <Row key={bay.id}>
@@ -55,7 +64,7 @@ export default function BaysByPlant() {
   return (
     <>
       <div className="page">
-        <Card title={`Bays`}>
+        <Card title={`${plant} Bays`}>
           <Row className="plants-header">
             <div className="t-small bold center-all" style={{flex: 1}}>Name</div>
             <div className="t-small bold center-all" style={{flex: 1}}>Status</div>
@@ -66,10 +75,11 @@ export default function BaysByPlant() {
 
         </Card>
 
+        <Alert message="Loading Plant Data..." green open={plantIsLoading} />
         <Alert message="Loading Bay Data..." green open={bayIsLoading} />
 
         <BottomMenu>
-          <BottomMenuItem title="Add Bay" href="/admin/plants/add-plant" className="center-all">
+          <BottomMenuItem title="Add Bay" href={`/admin/bays/add-bay/${plantId}`} className="center-all">
             <CgExtensionAdd size={22} className="admin-menu-item-icon center-all flex" />
           </BottomMenuItem>
         </BottomMenu>
