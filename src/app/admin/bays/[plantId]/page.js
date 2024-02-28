@@ -31,8 +31,8 @@ export default function BaysByPlant() {
     fetch(`/api/plant/get-plant/${plantId}`)
       .then((res) => res.json())
       .then((plantData) => {
-        console.log
-        // setPlant(plantData.name)
+        console.log(plantData)
+        setPlant(plantData.name)
         setPlantIsLoading(false)
     })
   }, [])
