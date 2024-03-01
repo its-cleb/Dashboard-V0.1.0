@@ -210,7 +210,7 @@ export default function PlantForm(props) {
       </div>
 
       <BottomMenu>
-        <BottomMenuItem title="Open Bay Editor" href={`/admin/bays/${plantId}`} className="center-all">
+        <BottomMenuItem title="Open Bay Editor" href={`/admin/bays/by-plant/${plantId}`} className="center-all">
           <BiBorderAll size={20} className="admin-menu-item-icon center-all flex" />
         </BottomMenuItem>
       </BottomMenu>

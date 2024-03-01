@@ -16,7 +16,8 @@ export default function BayForm(props) {
   const router = useRouter()
   const path = useGetPathEnd()
 
-  let plantId = props.edit ? path : null
+  let plantId = props.edit ? null : path
+  let bayId = props.edit ? path : null
 
   const blankForm = { 
     name: '',
@@ -28,7 +29,7 @@ export default function BayForm(props) {
   const [ plantName, setPlantName ] = useState('')
   const [ bays, setBays ] = useState([])
   const [ nameValid, setNameValid ] = useState(true)
-  const [ managerValid, setManagerValid ] = useState(true)
+  const [ statusValid, setStatusValid ] = useState(true)
   const [ formValid, setFormValid ] = useState(true)
 
   const setFormState = (key, value) => {
@@ -43,11 +44,14 @@ export default function BayForm(props) {
   const [bayIsLoading, setBayIsLoading] = useState(false)
 
   useEffect(() => { // Load Plant Name
+    props.edit ?
+      null
+      :
       fetch(`/api/plant/get-plant/${plantId}`)
         .then((res) => res.json())
         .then((data) => {
           setPlantName(data.name)
-          plantIsLoading(false)
+          setPlantIsLoading(false)
           setBayIsLoading(true)
       })
   }, [])
@@ -58,9 +62,10 @@ export default function BayForm(props) {
         .then((res) => res.json())
         .then((data) => {
           setForm({
-            name: data.name.toString(),
-            manager: data.manager.toString(),
+            name: data.name,
+            status: data.status,
           })
+          plantId = data.plantId
           setBayIsLoading(false)
           setBayIsLoading(true)
       })
@@ -89,16 +94,16 @@ export default function BayForm(props) {
       setNameValid(false)
       :
       setNameValid(true)}
-    {(form.manager === '') ?
-      setManagerValid(false)
+    {(form.status === '') ?
+      setStatusValid(false)
       :
-      setManagerValid(true)
+      setStatusValid(true)
     }
 
-    if (form.name === '' || form.manager === '') {
+    if (form.name === '' || form.status === '') {
       setFormValid(false)
       setAlert1(true)
-    } else if (form.name !== '' || form.manager !== '') {
+    } else if (form.name !== '' || form.status !== '') {
       setFormValid(true)
       
       props.edit ?
@@ -112,7 +117,8 @@ export default function BayForm(props) {
 
   const addBay = async () => {
     let name = form.name
-    let manager = form.manager
+    let status = form.status
+    let plant = plantId
 
     try {
       fetch('/api/bay/add-bay', {
@@ -120,17 +126,18 @@ export default function BayForm(props) {
         headers: {
           'Content-Type': 'application/json'
       },
-      body: JSON.stringify({name, manager})
+      body: JSON.stringify({name, status, plant})
       })
     } catch (error) {
       console.error(error)
     }
-    router.push('/admin/bays')
+    router.push(`/admin/bays/by-plant/${plantId}`)
   }
 
   const editBay = async () => {
     let name = form.name
-    let manager = form.manager
+    let status = form.status
+    let plant = plantId
 
     try {
       fetch(`/api/bay/edit-bay/${bayId}`, {
@@ -138,12 +145,12 @@ export default function BayForm(props) {
         headers: {
           'Content-Type': 'application/json'
       },
-      body: JSON.stringify({name, manager})
+      body: JSON.stringify({name, status, plant})
       })
     } catch (error) {
       console.error(error)
     }
-    router.push('/admin/bays')
+    router.push(`/admin/bays/by-plant/${plantId}`)
   }
 
   // Bay List Content
@@ -194,16 +201,6 @@ export default function BayForm(props) {
             </div>
             <div className="bay-button-text">{props.edit ? "Save Bay Edits" : "Add Bay"}</div>
           </div>
-
-          {props.edit ?
-            <Column>
-              <Card title="Bays">
-                {bayList}
-              </Card>
-            </Column>
-            :
-            null
-          }
 
           <Alert message="All fields must be filled out!" open={alert1} />
 

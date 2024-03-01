@@ -2,16 +2,15 @@ import { NextResponse } from "next/server"
 
 export async function POST(request){
   const res = await request.json()
-  const {name, email, position, role} = res
+  const {name, status, plant} = res
   
-  console.log("Add User API:", res)
+  console.log("Add Bay API:", res)
 
-    const result = await prisma.user.create({
+    const result = await prisma.bay.create({
       data: {
         name,
-        email,
-        position,
-        role
+        status,
+        plant
       }
     })
 

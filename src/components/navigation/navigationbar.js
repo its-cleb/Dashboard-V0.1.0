@@ -14,9 +14,9 @@ import "../../app/styles.css"
 
 export default function NavigationBar(props) {
 
-  const pathname = usePathname()
-  const path = "/" + pathname.charAt(1).toUpperCase()
-  + pathname.slice(2)
+  const path = usePathname()
+  // const path = "/" + path.charAt(1).toUpperCase()
+  // + path.slice(2)
 
   const [ open, setOpen ] = useState(true)
   
@@ -32,43 +32,43 @@ export default function NavigationBar(props) {
         <div className="sidebar-content"> 
           <Clock />
           <hr className="sidebar-hr" />
-          <Link href="/home" className={(pathname === "/home") ? 'sidebar-item-active' : 'sidebar-item-inactive'}>
+          <Link href="/home" className={(path === "/home") ? 'sidebar-item-active' : 'sidebar-item-inactive'}>
             <button className="sidebar-item">
               <div className="sidebar-item-icon"><FaHome size={20} /></div>
               <div className="sidebar-item-text">Home</div>
             </button>
           </Link>
-          <Link href="/plant/ARL-2" className={(pathname === "/plant/ARL-2") ? 'sidebar-item-active' : 'sidebar-item-inactive'}>
+          <Link href="/plant/ARL-2" className={(path === "/plant/ARL-2") ? 'sidebar-item-active' : 'sidebar-item-inactive'}>
             <button className="sidebar-item">
               <div className="sidebar-item-icon"><FaWarehouse size={20} /></div>
               <div className="sidebar-item-text">ARL-2</div>
             </button>
           </Link>
-          <Link href="/plant/ARL-6" className={(pathname === "/plant/ARL-6") ? 'sidebar-item-active' : 'sidebar-item-inactive'}>
+          <Link href="/plant/ARL-6" className={(path === "/plant/ARL-6") ? 'sidebar-item-active' : 'sidebar-item-inactive'}>
             <button className="sidebar-item">
               <div className="sidebar-item-icon"><FaWarehouse size={20} /></div>
               <div className="sidebar-item-text">ARL-6</div>
             </button>
           </Link>
-          <Link href="/plant/M-1" className={(pathname === "/plant/M-1") ? 'sidebar-item-active' : 'sidebar-item-inactive'}>
+          <Link href="/plant/M-1" className={(path === "/plant/M-1") ? 'sidebar-item-active' : 'sidebar-item-inactive'}>
             <button className="sidebar-item">
               <div className="sidebar-item-icon"><FaWarehouse size={20} /></div>
               <div className="sidebar-item-text">M-1</div>
             </button>
           </Link>
-          <Link href="/plant/M-2" className={(pathname === "/plant/M-2") ? 'sidebar-item-active' : 'sidebar-item-inactive'}>
+          <Link href="/plant/M-2" className={(path === "/plant/M-2") ? 'sidebar-item-active' : 'sidebar-item-inactive'}>
             <button className="sidebar-item">
               <div className="sidebar-item-icon"><FaWarehouse size={20} /></div>
               <div className="sidebar-item-text">M-2</div>
             </button>
           </Link>
-          <Link href="/plant/AUB" className={(pathname === "/plant/AUB") ? 'sidebar-item-active' : 'sidebar-item-inactive'}>
+          <Link href="/plant/AUB" className={(path === "/plant/AUB") ? 'sidebar-item-active' : 'sidebar-item-inactive'}>
             <button className="sidebar-item">
               <div className="sidebar-item-icon"><FaWarehouse size={20} /></div>
               <div className="sidebar-item-text">AUB</div>
             </button>
           </Link>
-          <Link href="/plant/KENT" className={(pathname === "/plant/KENT") ? 'sidebar-item-active' : 'sidebar-item-inactive'}>
+          <Link href="/plant/KENT" className={(path === "/plant/KENT") ? 'sidebar-item-active' : 'sidebar-item-inactive'}>
             <button className="sidebar-item">
               <div className="sidebar-item-icon"><FaWarehouse size={20} /></div>
               <div className="sidebar-item-text">KENT</div>

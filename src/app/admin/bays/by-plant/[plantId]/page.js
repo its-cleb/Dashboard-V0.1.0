@@ -1,16 +1,16 @@
 "use client"
 import './page.css'
-import '../../../styles.css'
+import '../../../../styles.css'
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { CgExtensionAdd } from "react-icons/cg"
-import { Row } from '../../../../components/generic/common'
-import { Card, Section } from '../../../../components/generic/card'
-import { useGetPathEnd } from '../../../../hooks/useGetPath'
-import Alert from '../../../../components/generic/Alert'
-import { BottomMenu, BottomMenuItem } from '../../../../components/navigation/bottommenu'
-import DeleteBayButton from '../../../../components/custom/DeleteBayButton'
+import { Row } from '../../../../../components/generic/common'
+import { Card, Section } from '../../../../../components/generic/card'
+import { useGetPathEnd } from '../../../../../hooks/useGetPath'
+import Alert from '../../../../../components/generic/Alert'
+import { BottomMenu, BottomMenuItem } from '../../../../../components/navigation/bottommenu'
+import DeleteBayButton from '../../../../../components/custom/DeleteBayButton'
 
 
 export default function BaysByPlant() {
