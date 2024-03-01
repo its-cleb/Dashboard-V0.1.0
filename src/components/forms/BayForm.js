@@ -16,8 +16,8 @@ export default function BayForm(props) {
   const router = useRouter()
   const path = useGetPathEnd()
 
-  let plantId = props.edit ? null : path
   let bayId = props.edit ? path : null
+  let plant = props.edit ? '' : path
 
   const blankForm = { 
     name: '',
@@ -27,7 +27,7 @@ export default function BayForm(props) {
   // Form Status
   const [ form, setForm ] = useState(blankForm)
   const [ plantName, setPlantName ] = useState('')
-  const [ bays, setBays ] = useState([])
+  const [ plantId, setPlantId ] = useState(plant)
   const [ nameValid, setNameValid ] = useState(true)
   const [ statusValid, setStatusValid ] = useState(true)
   const [ formValid, setFormValid ] = useState(true)
@@ -41,9 +41,9 @@ export default function BayForm(props) {
 
   // Loading States
   const [plantIsLoading, setPlantIsLoading] = useState(true)
-  const [bayIsLoading, setBayIsLoading] = useState(false)
+  const [bayIsLoading, setBayIsLoading] = useState(true)
 
-  useEffect(() => { // Load Plant Name
+  useEffect(() => { // Load Plant Name if Add
     props.edit ?
       null
       :
@@ -56,34 +56,31 @@ export default function BayForm(props) {
       })
   }, [])
 
-  useEffect(() => { // Load Bay Data
+  useEffect(() => { // Load Bay Data if Edit
     props.edit ?
       fetch(`/api/bay/get-bay/${bayId}`)
         .then((res) => res.json())
-        .then((data) => {
+        .then((bayData) => {
           setForm({
-            name: data.name,
-            status: data.status,
+            name: bayData.name,
+            status: bayData.status,
           })
-          plantId = data.plantId
+          setPlantId(bayData)
           setBayIsLoading(false)
-          setBayIsLoading(true)
+          getPlant(bayData.plantId)
       })
     :
     null
   }, [])
-  
-  useEffect(() => { // Load Plant Data
-    props.edit ?
-    fetch(`/api/bay/get-bays/${bayId}`)
+
+  const getPlant = async (id) => {
+    fetch(`/api/plant/get-plant/${id}`)
       .then((res) => res.json())
-      .then((bayData) => {
-        setBays(bayData)
-        setBayIsLoading(false)
+      .then((plantData) => {
+        setPlantName(plantData.name)
+        setPlantIsLoading(false)
     })
-    :
-    null
-  }, [bayIsLoading])
+  }
 
   // Form Alerts
   const [ alert1, setAlert1 ] = useState(false)
@@ -118,7 +115,6 @@ export default function BayForm(props) {
   const addBay = async () => {
     let name = form.name
     let status = form.status
-    let plant = plantId
 
     try {
       fetch('/api/bay/add-bay', {
@@ -126,7 +122,7 @@ export default function BayForm(props) {
         headers: {
           'Content-Type': 'application/json'
       },
-      body: JSON.stringify({name, status, plant})
+      body: JSON.stringify({name, status, plantId})
       })
     } catch (error) {
       console.error(error)
@@ -137,7 +133,6 @@ export default function BayForm(props) {
   const editBay = async () => {
     let name = form.name
     let status = form.status
-    let plant = plantId
 
     try {
       fetch(`/api/bay/edit-bay/${bayId}`, {
@@ -145,7 +140,7 @@ export default function BayForm(props) {
         headers: {
           'Content-Type': 'application/json'
       },
-      body: JSON.stringify({name, status, plant})
+      body: JSON.stringify({name, status, plantId})
       })
     } catch (error) {
       console.error(error)
@@ -153,23 +148,11 @@ export default function BayForm(props) {
     router.push(`/admin/bays/by-plant/${plantId}`)
   }
 
-  // Bay List Content
-  const bayList = bays.map(bay => 
-    <Row key={bay.id}>
-      <Link href={`/admin/bays/${bay.id}`}>
-        <Row className="bay-card">
-          <div className="bold center-all bays" style={{flex: 1}}>{bay.name}</div>
-          <div className="center-all bays" style={{flex: 1}}>{bay.status}</div>
-        </Row>
-      </Link>
-    </Row>  
-  )
-
   return (
     <>
       <div className="form-box flex-1 flex center-all mar-t-20">
         <Column className="center-all gap-10">
-          <h4>Adding to Plant: </h4>
+          <h4>Adding to Plant: {plantName}</h4>
           <Column>
             <label className="form-label t-left bold">Bay Name</label>
             <input 

@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server"
 
 export async function GET(request, { params }){
-  const plantId = params.plantId
+  const id = params.bayId
 
-  const bay = await prisma.bay.findMany({
-    where: {plantId}
+  const bay = await prisma.bay.findUnique({
+    where: {id}
   })
 
   console.log("Get Bay API:", bay)

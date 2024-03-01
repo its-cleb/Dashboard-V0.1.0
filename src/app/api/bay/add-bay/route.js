@@ -2,7 +2,7 @@ import { NextResponse } from "next/server"
 
 export async function POST(request){
   const res = await request.json()
-  const {name, status, plant} = res
+  const {name, status, plantId} = res
   
   console.log("Add Bay API:", res)
 
@@ -10,7 +10,11 @@ export async function POST(request){
       data: {
         name,
         status,
-        plant
+        plant: {
+          connect: {
+            id: plantId
+          }
+        }
       }
     })
 
