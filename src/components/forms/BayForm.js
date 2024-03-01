@@ -65,7 +65,7 @@ export default function BayForm(props) {
             name: bayData.name,
             status: bayData.status,
           })
-          setPlantId(bayData)
+          setPlantId(bayData.plantId)
           setBayIsLoading(false)
           getPlant(bayData.plantId)
       })
@@ -142,6 +142,7 @@ export default function BayForm(props) {
       },
       body: JSON.stringify({name, status, plantId})
       })
+      console.log('plantId:', plantId)
     } catch (error) {
       console.error(error)
     }
