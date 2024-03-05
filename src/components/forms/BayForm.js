@@ -1,11 +1,9 @@
 "use client"
 import '../../app/styles.css'
-import './BayForm.css'
+import './Form.css'
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import Link from 'next/link'
-import { Row, Column } from '../generic/common'
-import { Card } from '../generic/card'
+import { Column } from '../generic/common'
 import { CgExtensionAdd, CgExtension } from "react-icons/cg"
 import { useGetPathEnd } from "../../hooks/useGetPath"
 import Alert from "../generic/Alert"
@@ -21,7 +19,7 @@ export default function BayForm(props) {
 
   const blankForm = { 
     name: '',
-    status: ''
+    status: 'EMPTY'
   }
 
   // Form Status
@@ -30,7 +28,6 @@ export default function BayForm(props) {
   const [ plantId, setPlantId ] = useState(plant)
   const [ nameValid, setNameValid ] = useState(true)
   const [ statusValid, setStatusValid ] = useState(true)
-  const [ formValid, setFormValid ] = useState(true)
 
   const setFormState = (key, value) => {
     setForm(prev => ({
@@ -91,18 +88,10 @@ export default function BayForm(props) {
       setNameValid(false)
       :
       setNameValid(true)}
-    {(form.status === '') ?
-      setStatusValid(false)
-      :
-      setStatusValid(true)
-    }
 
     if (form.name === '' || form.status === '') {
-      setFormValid(false)
       setAlert1(true)
-    } else if (form.name !== '' || form.status !== '') {
-      setFormValid(true)
-      
+    } else if (form.name !== '' || form.status !== '') {    
       props.edit ?
         editBay()
         :
@@ -175,15 +164,15 @@ export default function BayForm(props) {
             </div>
           </Column>          
 
-          <div onClick={() => validateForm()} className="bay-button btn flex center-all cursor">
-            <div className="bay-button-icon">
+          <div onClick={() => validateForm()} className="form-button btn flex center-all cursor">
+            <div className="form-button-icon">
             {props.edit ?
-              <CgExtension size={24} />
+              <CgExtension size={22} />
               :
-              <CgExtensionAdd size={24} />
+              <CgExtensionAdd size={22} />
             }
             </div>
-            <div className="bay-button-text">{props.edit ? "Save Bay Edits" : "Add Bay"}</div>
+            <div className="form-button-text">{props.edit ? "Save Bay Edits" : "Add Bay"}</div>
           </div>
 
           <Alert message="All fields must be filled out!" open={alert1} />

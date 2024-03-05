@@ -1,15 +1,15 @@
 .form-box {
-  margin-top: 20px;
   width: 500px;
 }
 
 .form-label {
-  font-size: 14px;
+  font-size: 12px;
+  margin-bottom: -3px;
 }
 
 input {
-  width: 360px;
-  padding: 10px 20px;
+  width: 364px;
+  padding: 8px 16px;
   font-weight: 400;
   font-size: 1em;
 }
@@ -21,21 +21,27 @@ input {
 option:active {
   background-color: red;
 }
-.plant-button {
+.form-button {
   margin-top: 20px;
   width: 365px;
 }
-.plant-button-text {
+.form-button-text {
+  padding-top: 2px;
   padding-left: 10px;
+}
+.form-button-icon {
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
 
 .bay-card {
-  width: 200px;
+  width: 250px;
 }
+
 .invalid {
   border-color: red;
 }
-a
 .validation-box {
   color: #aa0000;
   width: 400px;

@@ -8,9 +8,10 @@ import './card.css'
 // --- <Card> ---
 const Card = (props) => {
   const activeFlex = Boolean(props.flex === undefined) ? 1 : props.flex
+  const styleClasses = "card shadow-shallow" + " " + (Boolean(props.className === undefined) ? "" : props.className)
 
   return (
-    <div className="card shadow-shallow"  style={{flex: activeFlex}}>
+    <div className={styleClasses}  style={{flex: activeFlex}}>
       <div className="card-header">
 
         <a href={props.link} className="card-title" style={{flex: 1}}>{props.title}</a>

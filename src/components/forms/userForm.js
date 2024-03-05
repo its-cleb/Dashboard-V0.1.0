@@ -1,6 +1,6 @@
 "use client"
 import '../../app/styles.css'
-import './UserForm.css'
+import './Form.css'
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { Column } from '../generic/common'
@@ -30,7 +30,6 @@ export default function UserForm(props) {
   const [ nameValid, setNameValid ] = useState(true)
   const [ emailValid, setEmailValid ] = useState(true)
   const [ titleValid, setTitleValid ] = useState(true)
-  const [ formValid, setFormValid ] = useState(true)
 
   const setFormState = (key, value) => {
     setForm(prev => ({
@@ -79,11 +78,8 @@ export default function UserForm(props) {
     }
 
     if (form.name === '' || form.email === '' || form.position === '') {
-      setFormValid(false)
       setAlert1(true)
-    } else if (form.name !== '' || form.email !== '' || form.position !== '') {
-      setFormValid(true)
-      
+    } else if (form.name !== '' || form.email !== '' || form.position !== '') {      
       props.edit ?
         editUser()
         :
@@ -177,15 +173,15 @@ export default function UserForm(props) {
             </div>
           </Column>
 
-          <div onClick={() => validateForm()} className="user-button btn flex center-all cursor">
-            <div className="user-button-icon">
+          <div onClick={() => validateForm()} className="form-button btn flex center-all cursor">
+            <div className="form-button-icon">
             {props.edit ?
-              <FaUserEdit size={25} />
+              <FaUserEdit size={22} />
               :
-              <FaUserPlus size={25} />
+              <FaUserPlus size={22} />
             }
             </div>
-            <div className="user-button-text">{props.edit ? "Edit User" : "Add User"}</div>
+            <div className="form-button-text">{props.edit ? "Edit User" : "Add User"}</div>
           </div>
 
           <Alert message="All fields must be filled out!" open={alert1} />

@@ -4,7 +4,7 @@ body {
 
 :root {
   font-family: Roboto, Helvetica, Arial, sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 24px;
   font-weight: 400;
   height: 100%;
@@ -159,7 +159,7 @@ option {
   text-align: center;
 }
 .t-small {
-  font-size: 0.8em;
+  font-size: 0.9em;
   line-height: 1;
 }
 

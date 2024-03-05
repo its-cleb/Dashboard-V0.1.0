@@ -1,11 +1,11 @@
 "use client"
 import '../../app/styles.css'
-import './PlantForm.css'
+import './Form.css'
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Row, Column } from '../generic/common'
-import { Card, Section } from '../generic/card'
+import { Card } from '../generic/card'
 import { BsBuildingFillAdd, BsBuildingFillGear } from "react-icons/bs"
 import { BottomMenu, BottomMenuItem } from '../../components/navigation/bottommenu'
 import { BiBorderAll } from "react-icons/bi"
@@ -31,7 +31,6 @@ export default function PlantForm(props) {
   const [ bays, setBays ] = useState([])
   const [ nameValid, setNameValid ] = useState(true)
   const [ managerValid, setManagerValid ] = useState(true)
-  const [ formValid, setFormValid ] = useState(true)
 
   const setFormState = (key, value) => {
     setForm(prev => ({
@@ -88,11 +87,8 @@ export default function PlantForm(props) {
     }
 
     if (form.name === '' || form.manager === '') {
-      setFormValid(false)
       setAlert1(true)
-    } else if (form.name !== '' || form.manager !== '') {
-      setFormValid(true)
-      
+    } else if (form.name !== '' || form.manager !== '') {      
       props.edit ?
         editPlant()
         :
@@ -174,20 +170,20 @@ export default function PlantForm(props) {
             />
           </Column>          
 
-          <div onClick={() => validateForm()} className="plant-button btn flex center-all cursor">
-            <div className="plant-button-icon">
+          <div onClick={() => validateForm()} className="form-button btn flex center-all cursor">
+            <div className="form-button-icon">
             {props.edit ?
-              <BsBuildingFillGear size={25} />
+              <BsBuildingFillGear size={22} />
               :
-              <BsBuildingFillAdd size={25} />
+              <BsBuildingFillAdd size={22} />
             }
             </div>
-            <div className="plant-button-text">{props.edit ? "Save Plant Edits" : "Add Plant"}</div>
+            <span className="form-button-text center-all">{props.edit ? "Save Plant Edits" : "Add Plant"}</span>
           </div>
 
           {props.edit ?
             <Column>
-              <Card title="Bays">
+              <Card className="bay-card" title="Bays">
                 {bayList}
               </Card>
             </Column>
@@ -199,21 +195,23 @@ export default function PlantForm(props) {
 
           {props.edit ?
             <Alert message="Loading Plant Data..." green open={plantIsLoading} />
-            :
-            null}
+            : null }
 
           {props.edit ?
             <Alert message="Loading Bay Data..." green open={bayIsLoading} />
-            :
-            null}
+            : null }
         </Column>
       </div>
 
-      <BottomMenu>
-        <BottomMenuItem title="Open Bay Editor" href={`/admin/bays/by-plant/${plantId}`} className="center-all">
-          <BiBorderAll size={20} className="admin-menu-item-icon center-all flex" />
-        </BottomMenuItem>
-      </BottomMenu>
+      {props.edit ?
+        <BottomMenu>
+          <BottomMenuItem title="Open Bay Editor" href={`/admin/bays/by-plant/${plantId}`} className="center-all">
+            <BiBorderAll size={20} className="admin-menu-item-icon center-all flex" />
+          </BottomMenuItem>
+        </BottomMenu>
+        :
+        null
+      }
     </>
   )
 }
