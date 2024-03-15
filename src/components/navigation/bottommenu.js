@@ -22,13 +22,13 @@ const BottomMenuItem = (props) => {
 
   return (
     hasClick ? 
-    <div onClick={props.click} className="bottom-menu-item flex">
+    <div onClick={props.click} className="bottom-menu-item flex cursor-pointer">
       <div className="bottom-menu-item-icon flex">{props.children}</div>
       <span className="bottom-menu-item-text flex center-all">{props.title}</span>
     </div>
     :
     <div>
-      <Link href={props.href} className="bottom-menu-item flex">
+      <Link href={props.href} className="bottom-menu-item flex cursor-pointer">
         <div className="bottom-menu-item-icon flex">{props.children}</div>
         <span className="bottom-menu-item-text flex center-all">{props.title}</span>
       </Link>

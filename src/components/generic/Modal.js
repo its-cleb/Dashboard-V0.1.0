@@ -21,9 +21,9 @@ export default function Modal(props) {
         <div className={modalStyle}>
           <div className="modal-header row">
             <div className="modal-title center-all">
-              <h4>{props.title}</h4>
+              <h3>{props.title}</h3>
             </div>
-            <IoMdCloseCircle className="close-button" onClick={() => setVisible(false)} size={24} />
+            <IoMdCloseCircle className="close-button" onClick={props.close} size={24} />
           </div>
           <div className="modal-content">
             {props.children}
