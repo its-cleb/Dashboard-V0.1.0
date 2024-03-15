@@ -6,6 +6,7 @@ import { BsBuildingFillAdd } from "react-icons/bs"
 import { Card, Section } from '../../../components/generic/card'
 import { Row } from '../../../components/generic/common'
 import { BottomMenu, BottomMenuItem } from '../../../components/navigation/bottommenu'
+import Modal from '../../../components/generic/Modal'
 import DeletePlantButton from '../../../components/custom/DeletePlantButton'
 
 async function getPlants(){
@@ -53,7 +54,11 @@ export default async function Plants() {
           </BottomMenuItem>
         </BottomMenu>
 
+        
       </div>
+      <Modal className="m-w-400" title="Add Plant" visible={true}>
+        <div>Test</div>
+      </Modal>
     </>
   )
 }
