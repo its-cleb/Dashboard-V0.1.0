@@ -1,7 +1,6 @@
 "use client"
 import './page.css'
 import '../../styles.css'
-import Link from 'next/link'
 import React, { useState, useEffect } from 'react'
 import { BsBuildingFillAdd } from "react-icons/bs"
 import { Card, Section } from '../../../components/generic/card'
@@ -15,8 +14,10 @@ import PlantForm from '../../../components/forms/PlantForm'
 export default function Plants() {
 
   const [ plant, setPlant ] = useState([])
+  const [ currentPlant, setCurrentPlant ] = useState(null)
   const [ plantIsLoading, setPlantIsLoading ] = useState(true)
-  const [ modalVisible, setModalVisible ] = useState(false)
+  const [ modal1Visible, setModal1Visible ] = useState(false)
+  const [ modal2Visible, setModal2Visible ] = useState(false)
 
   useEffect(() => { // Load Plant Data
     fetch(`/api/plant/all-plants`)
@@ -28,23 +29,30 @@ export default function Plants() {
     })
   }, [])
 
-  const openModal = () => {
-    setModalVisible(true)
+  const openModal1 = () => {
+    setModal1Visible(true)
   }
-  const closeModal = () => {
-    setModalVisible(false)
+  const closeModal1 = () => {
+    setModal1Visible(false)
+  }
+  const openModal2 = (name) => {
+    setCurrentPlant(name)
+    setModal2Visible(true)
+  }
+  const closeModal2 = () => {
+    setModal2Visible(false)
   }
 
   const plantsList = plant.map(plant => 
     <Row key={plant.id}>
       <Section flex={1}  className="cursor-pointer">
-        <Link href={`/admin/plants/${plant.id}`}>
+        <div onClick={() => openModal2('test')}>
           <Row>
             <div className="bold center-all plants" style={{flex: 1}}>{plant.name}</div>
             <div className="center-all plants" style={{flex: 1}}>{plant.manager}</div>
             <div className="center-all t-small plants" style={{flex: 1}}>{plant.id}</div>
           </Row>
-        </Link>
+        </div>
       </Section>
       <DeletePlantButton plantId={plant.id}/>
     </Row>  
@@ -65,17 +73,19 @@ export default function Plants() {
         </Card>
 
         <BottomMenu>
-          <BottomMenuItem title="Add Plant" click={openModal} className="center-all">
+          <BottomMenuItem title="Add Plant" click={openModal1} className="center-all">
             <BsBuildingFillAdd size={20} className="admin-menu-item-icon center-all flex" />
           </BottomMenuItem>
         </BottomMenu>
-
-        
       </div>
-      <Modal className="m-w-400" title="Add Plant" visible={modalVisible} close={closeModal}>
+
+      <Modal className="m-w-500" title="Add Plant" visible={modal1Visible} close={closeModal1}>
         <PlantForm />
       </Modal>
 
+      <Modal className="m-w-500" title="Edit Plant" visible={modal2Visible} close={closeModal2}>
+        <PlantForm edit  />
+      </Modal>
 
       <Alert message="Loading Plant Data..." green open={plantIsLoading} />
     </>

@@ -113,7 +113,7 @@ export default function PlantForm(props) {
     } catch (error) {
       console.error(error)
     }
-    router.push('/admin/plants')
+    window.location.reload(false)
   }
 
   const editPlant = async () => {
@@ -148,7 +148,7 @@ export default function PlantForm(props) {
 
   return (
     <>
-      <div className="form-box flex-1 flex center-all mar-t-20">
+      <div className="form-box flex-1 flex center-all mar-b-20">
         <Column className="center-all gap-10">
           <Column>
             <label className="form-label t-left bold">Plant Name</label>
@@ -170,7 +170,7 @@ export default function PlantForm(props) {
             />
           </Column>          
 
-          <div onClick={() => validateForm()} className="form-button btn flex center-all cursor">
+          <div onClick={() => validateForm()} className="form-button btn flex center-all cursor mar-t-10">
             <div className="form-button-icon">
             {props.edit ?
               <BsBuildingFillGear size={22} />
@@ -182,36 +182,22 @@ export default function PlantForm(props) {
           </div>
 
           {props.edit ?
-            <Column>
-              <Card className="bay-card" title="Bays">
-                {bayList}
-              </Card>
-            </Column>
+            <div href={`/admin/bays/by-plant/${plantId}`} className="form-button btn flex center-all cursor">
+              <div className="form-button-icon">
+                <BiBorderAll size={20} className="admin-menu-item-icon center-all flex"/>
+              </div>
+              <span className="form-button-text center-all">Open Bay Editor</span>
+            </div>
             :
             null
           }
 
           <Alert message="All fields must be filled out!" open={alert1} />
 
-          {props.edit ?
-            <Alert message="Loading Plant Data..." green open={plantIsLoading} />
-            : null }
-
-          {props.edit ?
-            <Alert message="Loading Bay Data..." green open={bayIsLoading} />
-            : null }
         </Column>
       </div>
 
-      {props.edit ?
-        <BottomMenu>
-          <BottomMenuItem title="Open Bay Editor" href={`/admin/bays/by-plant/${plantId}`} className="center-all">
-            <BiBorderAll size={20} className="admin-menu-item-icon center-all flex" />
-          </BottomMenuItem>
-        </BottomMenu>
-        :
-        null
-      }
+      
     </>
   )
 }
