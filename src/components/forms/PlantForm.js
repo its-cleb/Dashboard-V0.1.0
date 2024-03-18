@@ -5,9 +5,7 @@ import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Row, Column } from '../generic/common'
-import { Card } from '../generic/card'
 import { BsBuildingFillAdd, BsBuildingFillGear } from "react-icons/bs"
-import { BottomMenu, BottomMenuItem } from '../../components/navigation/bottommenu'
 import { BiBorderAll } from "react-icons/bi"
 import { useGetPath, useGetPathEnd } from "../../hooks/useGetPath"
 import Alert from "../generic/Alert"
