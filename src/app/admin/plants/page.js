@@ -14,7 +14,7 @@ import PlantForm from '../../../components/forms/PlantForm'
 export default function Plants() {
 
   const [ plant, setPlant ] = useState([])
-  const [ currentPlant, setCurrentPlant ] = useState(null)
+  const [ currentPlant, setCurrentPlant ] = useState({})
   const [ plantIsLoading, setPlantIsLoading ] = useState(true)
   const [ modal1Visible, setModal1Visible ] = useState(false)
   const [ modal2Visible, setModal2Visible ] = useState(false)
@@ -35,9 +35,10 @@ export default function Plants() {
   const closeModal1 = () => {
     setModal1Visible(false)
   }
-  const openModal2 = (name) => {
-    setCurrentPlant(name)
+  const openModal2 = (name, manager, id) => {
+    setCurrentPlant({name, manager, id})
     setModal2Visible(true)
+    console.log(name, manager, id)
   }
   const closeModal2 = () => {
     setModal2Visible(false)
@@ -46,7 +47,7 @@ export default function Plants() {
   const plantsList = plant.map(plant => 
     <Row key={plant.id}>
       <Section flex={1}  className="cursor-pointer">
-        <div onClick={() => openModal2('test')}>
+        <div onClick={() => openModal2(plant.name, plant.manager, plant.id)}>
           <Row>
             <div className="bold center-all plants" style={{flex: 1}}>{plant.name}</div>
             <div className="center-all plants" style={{flex: 1}}>{plant.manager}</div>

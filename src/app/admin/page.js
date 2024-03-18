@@ -1,6 +1,7 @@
 
 import '../styles.css'
 import './page.css'
+import prisma from '../../lib/prisma'
 import { IconButton } from "../../components/generic/common"
 import { FaUsersGear } from "react-icons/fa6"
 import { BsBuildingFillGear } from "react-icons/bs"
