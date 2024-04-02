@@ -395,3 +395,7 @@ option {
 .gradient-black {
   background: linear-gradient(195deg,   rgb( 38, 38, 38), rgb(13, 13, 13))
 }
+
+.color-white {
+  color: white;
+}

@@ -1,7 +1,9 @@
 "use client"
 import './page.css'
 import '../../styles.css'
+import '../../../components/forms/Form.css'
 import React, { useState, useEffect } from 'react'
+import Link from 'next/link'
 import { Card, Section } from '../../../components/generic/card'
 import { Row, Column } from '../../../components/generic/common'
 import { BottomMenu, BottomMenuItem } from '../../../components/navigation/bottommenu'
@@ -10,7 +12,6 @@ import { BiBorderAll } from "react-icons/bi"
 import Alert from '../../../components/generic/Alert'
 import Modal from '../../../components/generic/Modal'
 import DeletePlantButton from '../../../components/custom/DeletePlantButton'
-import PlantForm from '../../../components/forms/PlantForm'
 
 export default function Plants() {
 
@@ -200,12 +201,12 @@ export default function Plants() {
             </div>
 
               {editMode ?
-                <div href={`/admin/bays/by-plant/${currentPlant.id}`} className="form-button btn flex center-all cursor">
+                <Link href={`/admin/bays/by-plant/${currentPlant.id}`} className="form-button btn flex center-all cursor">
                   <div className="form-button-icon">
-                    <BiBorderAll size={20} className="admin-menu-item-icon center-all flex"/>
+                    <BiBorderAll size={20} className="admin-menu-item-icon center-all flex color-white"/>
                   </div>
-                  <span className="form-button-text center-all">Open Bay Editor</span>
-                </div>
+                  <span className="form-button-text center-all color-white">Open Bay Editor</span>
+                </Link>
                 :
                 null
               }

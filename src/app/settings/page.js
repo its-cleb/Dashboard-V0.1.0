@@ -1,6 +1,6 @@
 
 import '../styles.css'
-import prisma from '@/lib/prisma'
+import prisma from '../../lib/prisma'
 
 async function getUsers(){
   const users = await prisma.user.findMany({

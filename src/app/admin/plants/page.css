@@ -20,3 +20,10 @@
   background-color: rgb(51, 204, 255, 0.3);
   transition: all 0.2s ease-in-out;
 }
+
+.form-button-icon {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
