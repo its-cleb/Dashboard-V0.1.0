@@ -23,6 +23,7 @@ export default function Plants() {
   const [ nameValid, setNameValid ] = useState(true)
   const [ managerValid, setManagerValid ] = useState(true)
 
+  // Form Data
   const [ form, setForm ] = useState({name: '', manager: ''})
 
   const setFormState = (key, value) => {
@@ -32,7 +33,7 @@ export default function Plants() {
     }))
   }
 
-
+  // Load Data
   useEffect(() => { // Load Plant Data
     fetch(`/api/plant/all-plants`)
       .then((res) => res.json())
@@ -47,6 +48,10 @@ export default function Plants() {
   // Modal Control
   const addModal = () => {
     setCurrentPlant({name:'', manager:'', id:''})
+    setForm({
+      name: '',
+      manager: '',
+    })
     setEditMode(false)
     setModalVisible(true)
   }
