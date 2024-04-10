@@ -1,7 +1,7 @@
 "use client"
 import './page.css'
 import '../../../../styles.css'
-import '../../../../../components/forms/Form.css'
+import '../../../../../styles/form.css'
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
@@ -35,7 +35,7 @@ export default function BaysByPlant() {
   const [ nameValid, setNameValid ] = useState(true)
 
   // Form Data
-  const [ form, setForm ] = useState({name: '', status: ''})
+  const [ form, setForm ] = useState({name: '', status: 'EMPTY'})
 
   const setFormState = (key, value) => {
     setForm(prev => ({
@@ -66,10 +66,10 @@ export default function BaysByPlant() {
 
   // Modal Control
   const addModal = () => {
-    setCurrentBay({name:'', status:'', id:''})
+    setCurrentBay({name:'', status:'EMPTY', id:''})
     setForm({
       name: '',
-      status: '',
+      status: 'EMPTY',
     })
     setEditMode(false)
     setModalVisible(true)

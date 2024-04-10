@@ -1,6 +1,6 @@
 "use client"
 import '../../app/styles.css'
-import './Form.css'
+import '../../styles/form.css'
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { Column } from '../generic/common'

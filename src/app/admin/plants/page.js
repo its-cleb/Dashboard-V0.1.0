@@ -1,7 +1,7 @@
 "use client"
 import './page.css'
 import '../../styles.css'
-import '../../../components/forms/Form.css'
+import '../../../styles/form.css'
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Card, Section } from '../../../components/generic/card'
