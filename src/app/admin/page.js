@@ -1,4 +1,3 @@
-
 import '../styles.css'
 import './page.css'
 import prisma from '../../lib/prisma'
